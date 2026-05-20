@@ -12,9 +12,10 @@ const config: ForgeConfig = {
     name: 'ListeDeCourses',
     executableName: 'ListeDeCourses',
     icon: './assets/icon',
-    // Copier le .wasm de sql.js dans le build
+    // Copier les modules natifs dans resources/ pour qu'ils soient accessibles via require()
     extraResource: [
-      path.resolve('./node_modules/sql.js/dist/sql-wasm.wasm'),
+      path.resolve('./node_modules/sql.js'),
+      path.resolve('./node_modules/xlsx'),
     ],
     // Windows uniquement
     platform: 'win32',

@@ -15,9 +15,19 @@ export default function SearchBar({ produits, onAjouter, onNouveauProduit }: Pro
   const [quantite, setQuantite] = useState(1);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const suggestions = query.trim().length > 0
-    ? produits.filter(p => p.nom.toLowerCase().includes(query.toLowerCase()))
+    ? produits
+        .filter(p => p.nom.toLowerCase().includes(query.toLowerCase()))
+        .sort((a, b) => {
+          const q = query.toLowerCase();
+          const aStarts = a.nom.toLowerCase().startsWith(q);
+          const bStarts = b.nom.toLowerCase().startsWith(q);
+          if (aStarts && !bStarts) return -1;
+          if (!aStarts && bStarts) return 1;
+          return a.nom.localeCompare(b.nom, 'fr');
+        })
     : [];
 
   const aucunResultat = query.trim().length > 0 && suggestions.length === 0;
@@ -37,12 +47,14 @@ export default function SearchBar({ produits, onAjouter, onNouveauProduit }: Pro
     setQuery('');
     setQuantite(1);
     setShowSuggestions(false);
+    setTimeout(() => inputRef.current?.focus(), 0);
   }
 
   return (
     <div ref={ref} className="relative flex gap-2">
       <div className="relative flex-1">
         <Input
+          ref={inputRef}
           type="text"
           value={query}
           onChange={e => { setQuery(e.target.value); setShowSuggestions(true); }}

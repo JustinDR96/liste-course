@@ -79,13 +79,21 @@ export default function ListeCourses() {
   const total = liste.reduce((sum, i) => sum + i.prix * i.quantite, 0);
   const nbCoches = liste.length;
 
-  // Grouper par rayon
-  const parRayon = liste.reduce((acc, item) => {
-    const rayon = item.rayon_nom ?? 'Sans rayon';
-    if (!acc[rayon]) acc[rayon] = [];
-    acc[rayon].push(item);
-    return acc;
-  }, {} as Record<string, ItemListe[]>);
+  // Tri pour la vue impression uniquement (même logique que ApercuImpression)
+  function parseRayon(nom: string | undefined): [number, string] {
+    if (!nom) return [Infinity, ''];
+    const match = nom.trim().match(/^0*(\d+)([a-zA-Z]*)$/);
+    if (!match) return [Infinity, nom.toLowerCase()];
+    return [parseInt(match[1], 10), match[2].toLowerCase()];
+  }
+
+  const listeTrie = [...liste].sort((a, b) => {
+    const [numA, letA] = parseRayon(a.rayon_nom);
+    const [numB, letB] = parseRayon(b.rayon_nom);
+    if (numA !== numB) return numA - numB;
+    if (letA !== letB) return letA.localeCompare(letB, 'fr');
+    return a.produit_nom.localeCompare(b.produit_nom, 'fr');
+  });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -159,7 +167,7 @@ export default function ListeCourses() {
         </div>
         <hr className="mb-4 border-gray-300" />
         <div style={{ columnCount: 2, columnGap: '3rem' }}>
-          {liste.map(item => (
+          {listeTrie.map(item => (
             <div key={item.id} style={{ breakInside: 'avoid' }} className="flex items-center gap-2 py-0.5 text-sm">
               <span className="inline-block w-3.5 h-3.5 border border-gray-500 shrink-0 mt-0.5" />
               <span className="flex-1">

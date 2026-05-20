@@ -14,6 +14,24 @@ export default function ApercuImpression() {
 
   const total = liste.reduce((sum, i) => sum + i.prix * i.quantite, 0);
 
+  // Tri pour l'impression uniquement par nom de rayon parsé :
+  // "1" < "2" < "2a" < "2B" < "02" (tous traités comme 2) < "11" < "11a"
+  // Les produits sans rayon vont à la fin, puis tri alphabétique sur le produit
+  function parseRayon(nom: string | undefined): [number, string] {
+    if (!nom) return [Infinity, ''];
+    const match = nom.trim().match(/^0*(\d+)([a-zA-Z]*)$/);
+    if (!match) return [Infinity, nom.toLowerCase()];
+    return [parseInt(match[1], 10), match[2].toLowerCase()];
+  }
+
+  const listeTrie = [...liste].sort((a, b) => {
+    const [numA, letA] = parseRayon(a.rayon_nom);
+    const [numB, letB] = parseRayon(b.rayon_nom);
+    if (numA !== numB) return numA - numB;
+    if (letA !== letB) return letA.localeCompare(letB, 'fr');
+    return a.produit_nom.localeCompare(b.produit_nom, 'fr');
+  });
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Barre d'outils — masquée à l'impression */}
@@ -45,7 +63,7 @@ export default function ApercuImpression() {
 
           {/* Liste en 2 colonnes — remplit la 1ère colonne de haut en bas, puis la 2ème */}
           <div style={{ columnCount: 2, columnGap: '20mm', columnFill: 'auto', height: '220mm' }}>
-            {liste.map(item => (
+            {listeTrie.map(item => (
               <div
                 key={item.id}
                 style={{ breakInside: 'avoid' }}

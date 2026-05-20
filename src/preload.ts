@@ -35,4 +35,10 @@ contextBridge.exposeInMainWorld('api', {
 
   // Import Excel
   importerExcel: () => ipcRenderer.invoke('db:importerExcel'),
+
+  // Mises à jour
+  onUpdateAvailable: (cb: (info: { version: string; url: string }) => void) => {
+    ipcRenderer.on('update:available', (_, info) => cb(info));
+  },
+  openUrl: (url: string) => ipcRenderer.invoke('update:openUrl', url),
 });

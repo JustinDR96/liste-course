@@ -1,5 +1,6 @@
-import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog, shell, Menu } from 'electron';
 import path from 'node:path';
+import https from 'node:https';
 import started from 'electron-squirrel-startup';
 import {
   initDatabase,
@@ -60,12 +61,64 @@ ipcMain.handle('db:importerExcel', async () => {
   return { canceled: false, ...stats };
 });
 
-const createWindow = () => {
-  // Create the browser window.
+// ─── Vérificateur de mise à jour ──────────────────────────────────────────────
+const GITHUB_REPO = 'JustinDR96/liste-course';
+const CURRENT_VERSION = app.getVersion();
+
+function fetchLatestRelease(): Promise<{ version: string; url: string } | null> {
+  return new Promise((resolve) => {
+    const options = {
+      hostname: 'api.github.com',
+      path: `/repos/${GITHUB_REPO}/releases/latest`,
+      headers: { 'User-Agent': 'ListeDeCourses-App' },
+    };
+    https.get(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          const version = (json.tag_name as string ?? '').replace(/^v/, '');
+          const url = json.html_url as string ?? '';
+          resolve(version ? { version, url } : null);
+        } catch {
+          resolve(null);
+        }
+      });
+    }).on('error', () => resolve(null));
+  });
+}
+
+function compareVersions(a: string, b: string): number {
+  const pa = a.split('.').map(Number);
+  const pb = b.split('.').map(Number);
+  for (let i = 0; i < 3; i++) {
+    if ((pa[i] ?? 0) > (pb[i] ?? 0)) return 1;
+    if ((pa[i] ?? 0) < (pb[i] ?? 0)) return -1;
+  }
+  return 0;
+}
+
+async function checkForUpdates(win: BrowserWindow) {
+  const release = await fetchLatestRelease();
+  if (!release) return;
+  if (compareVersions(release.version, CURRENT_VERSION) > 0) {
+    win.webContents.send('update:available', { version: release.version, url: release.url });
+  }
+}
+
+ipcMain.handle('update:openUrl', (_, url: string) => {
+  shell.openExternal(url);
+});
+
+Menu.setApplicationMenu(null);
+
+const createWindow = (): BrowserWindow => {
   const mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
     title: 'Liste de Courses',
+    icon: path.join(__dirname, '../../assets/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -79,6 +132,8 @@ const createWindow = () => {
       path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`),
     );
   }
+
+  return mainWindow;
 };
 
 // This method will be called when Electron has finished
@@ -87,7 +142,9 @@ const createWindow = () => {
 // Initialise la DB avant d'ouvrir la fenêtre
 app.on('ready', async () => {
   await initDatabase(dataDir);
-  createWindow();
+  const win = createWindow();
+  // Vérifier les mises à jour 3 secondes après le démarrage
+  setTimeout(() => checkForUpdates(win), 3000);
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common

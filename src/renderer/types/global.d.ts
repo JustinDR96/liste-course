@@ -24,6 +24,8 @@ declare global {
       getListeSauvegardeeItems: (liste_id: number) => Promise<any[]>;
       supprimerListeSauvegardee: (id: number) => Promise<void>;
       importerExcel: () => Promise<{ canceled: boolean; rayons?: number; produits?: number }>;
+      onUpdateAvailable: (cb: (info: { version: string; url: string }) => void) => void;
+      openUrl: (url: string) => Promise<void>;
     };
   }
 }

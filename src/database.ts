@@ -1,11 +1,17 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const initSqlJs = require('sql.js');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const XLSX = require('xlsx');
 import type { Database } from 'sql.js';
 import { app } from 'electron';
 import path from 'node:path';
 import fs from 'node:fs';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const initSqlJs = app.isPackaged
+  ? require(path.join(process.resourcesPath, 'sql.js', 'dist', 'sql-wasm.js'))
+  : require('sql.js');
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const XLSX = app.isPackaged
+  ? require(path.join(process.resourcesPath, 'xlsx'))
+  : require('xlsx');
 
 let db: Database;
 let dbPath: string;
@@ -20,7 +26,7 @@ export async function initDatabase(dataDir: string): Promise<void> {
   const SQL = await initSqlJs.default({
     locateFile: (file: string) => {
       if (app.isPackaged) {
-        return path.join(process.resourcesPath, file);
+        return path.join(process.resourcesPath, 'sql.js', 'dist', file);
       }
       return path.join(__dirname, '../../node_modules/sql.js/dist/', file);
     }
@@ -177,7 +183,7 @@ export function getListeCourses() {
     FROM liste_courses lc
     JOIN produits p ON lc.produit_id = p.id
     LEFT JOIN rayons r ON p.rayon_id = r.id
-    ORDER BY r.numero_ordre ASC, p.nom ASC
+    ORDER BY lc.id ASC
   `);
 }
 
