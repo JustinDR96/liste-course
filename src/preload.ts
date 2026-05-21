@@ -45,6 +45,10 @@ contextBridge.exposeInMainWorld('api', {
   // Import Excel
   importerExcel: () => ipcRenderer.invoke('db:importerExcel'),
 
+  // Impression
+  print: () => ipcRenderer.invoke('print:preview'),
+  printToPdf: () => ipcRenderer.invoke('print:pdf'),
+
   // Mises à jour
   onUpdateAvailable: (cb: (info: { version: string; url: string }) => void) => {
     ipcRenderer.on('update:available', (_, info) => cb(info));

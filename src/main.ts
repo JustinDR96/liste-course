@@ -121,6 +121,28 @@ ipcMain.handle('update:openUrl', (_, url: string) => {
   shell.openExternal(url);
 });
 
+ipcMain.handle('print:preview', (event) => {
+  const win = BrowserWindow.fromWebContents(event.sender);
+  if (!win) return;
+  win.webContents.print({ silent: false, printBackground: true }, () => {});
+});
+
+ipcMain.handle('print:pdf', async (event) => {
+  const win = BrowserWindow.fromWebContents(event.sender);
+  if (!win) return;
+  try {
+    const data = await win.webContents.printToPDF({
+      printBackground: false,
+      pageSize: 'A4',
+    });
+    const tmpPath = path.join(app.getPath('temp'), `liste-courses-${Date.now()}.pdf`);
+    fs.writeFileSync(tmpPath, data);
+    shell.openPath(tmpPath);
+  } catch (e) {
+    console.error('printToPDF error:', e);
+  }
+});
+
 Menu.setApplicationMenu(null);
 
 const createWindow = (): BrowserWindow => {

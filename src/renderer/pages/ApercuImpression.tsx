@@ -50,7 +50,7 @@ export default function ApercuImpression() {
           <ArrowLeft size={14} className="mr-1" /> Retour
         </Button>
         <span className="text-sm text-gray-500">Aperçu avant impression</span>
-        <Button size="sm" onClick={() => window.print()} className="ml-auto">
+        <Button size="sm" onClick={() => window.api.print()} className="ml-auto">
           <Printer size={14} className="mr-1" /> Imprimer
         </Button>
       </div>
@@ -59,44 +59,55 @@ export default function ApercuImpression() {
       <div className="print:p-0 p-8 flex justify-center">
         <div
           className="bg-white shadow-lg print:shadow-none"
-          style={{ width: '210mm', minHeight: '297mm', padding: '15mm' }}
+          style={{ width: '210mm', minHeight: '297mm', padding: '8mm 10mm' }}
         >
           {/* En-tête */}
-          <div className="flex justify-between items-start mb-6">
-            <h1 className="text-xl font-bold">Liste de Courses</h1>
+          <div className="flex justify-between items-start mb-3">
+            <h1 className="text-lg font-bold">Liste de Courses</h1>
             <div className="text-right text-sm text-gray-500">
               <div>{new Date().toLocaleDateString('fr-BE', { day: '2-digit', month: 'long', year: 'numeric' })}</div>
               <div>{liste.length} articles</div>
             </div>
           </div>
-          <hr className="border-gray-300 mb-6" />
+          <hr className="border-gray-300 mb-3" />
 
-          {/* Liste en 2 colonnes — remplit la 1ère colonne de haut en bas, puis la 2ème */}
-          <div style={{ columnCount: 2, columnGap: '20mm', columnFill: 'auto', height: '220mm' }}>
-            {listeTrie.map(item => (
-              <div
-                key={item.id}
-                style={{ breakInside: 'avoid' }}
-                className="flex items-start gap-2 py-1 text-sm border-b border-dotted border-gray-200"
-              >
-                <span className="flex-1">
-                  {item.quantite > 1 && <span className="font-semibold">{item.quantite}× </span>}
-                  {item.produit_nom}
-                  {item.rayon_nom && (
-                    <span className="text-gray-400 text-xs ml-1">({item.rayon_nom})</span>
-                  )}
-                </span>
-                {item.prix > 0 && (
-                  <span className="text-gray-400 text-xs shrink-0">
-                    {(item.prix * item.quantite).toFixed(2)}€
-                  </span>
-                )}
+          {/* Liste en 2 colonnes de 30 items, pagination automatique */}
+          {Array.from({ length: Math.ceil(listeTrie.length / 60) }, (_, pi) => {
+            const page = listeTrie.slice(pi * 60, (pi + 1) * 60);
+            return (
+              <div key={pi} style={pi > 0 ? { pageBreakBefore: 'always', paddingTop: '8mm' } : {}}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 10mm' }}>
+                  {[page.slice(0, 30), page.slice(30)].map((col, ci) => (
+                    <div key={ci}>
+                      {col.map(item => (
+                        <div
+                          key={item.id}
+                          style={{ fontSize: '13px' }}
+                          className="flex items-start gap-2 py-1 border-b border-dotted border-gray-200"
+                        >
+                          <span className="flex-1">
+                            {item.quantite > 1 && <span className="font-semibold">{item.quantite}× </span>}
+                            {item.produit_nom}
+                            {item.rayon_nom && (
+                              <span className="text-gray-400 ml-1" style={{ fontSize: '11px' }}>({item.rayon_nom})</span>
+                            )}
+                          </span>
+                          {item.prix > 0 && (
+                            <span className="text-gray-400 shrink-0" style={{ fontSize: '11px' }}>
+                              {(item.prix * item.quantite).toFixed(2)}€
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
 
           {/* Total */}
-          <div className="mt-8 pt-3 border-t border-gray-300 flex justify-end text-sm font-semibold">
+          <div className="mt-2 pt-2 border-t border-gray-300 flex justify-end text-sm font-semibold">
             Total estimé : {total.toFixed(2)} €
           </div>
         </div>
