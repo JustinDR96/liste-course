@@ -6,6 +6,7 @@ contextBridge.exposeInMainWorld('api', {
   getRayons: () => ipcRenderer.invoke('db:getRayons'),
   createRayon: (nom: string, ordre?: number) => ipcRenderer.invoke('db:createRayon', nom, ordre ?? 0),
   updateRayon: (id: number, nom: string) => ipcRenderer.invoke('db:updateRayon', id, nom),
+  updateRayonNom: (id: number, nom: string) => ipcRenderer.invoke('db:updateRayonNom', id, nom),
   deleteRayon: (id: number) => ipcRenderer.invoke('db:deleteRayon', id),
   countProduitsInRayon: (id: number) => ipcRenderer.invoke('db:countProduitsInRayon', id),
   getProduitsParRayon: (rayon_id: number) => ipcRenderer.invoke('db:getProduitsParRayon', rayon_id),
@@ -24,6 +25,7 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.invoke('db:ajouterAListe', produit_id, quantite ?? 1),
   cocherProduit: (id: number, coche: boolean) => ipcRenderer.invoke('db:cocherProduit', id, coche),
   updateQuantite: (id: number, quantite: number) => ipcRenderer.invoke('db:updateQuantite', id, quantite),
+  updatePrixListe: (id: number, prix: number) => ipcRenderer.invoke('db:updatePrixListe', id, prix),
   supprimerDeListe: (id: number) => ipcRenderer.invoke('db:supprimerDeListe', id),
   viderListe: () => ipcRenderer.invoke('db:viderListe'),
 
@@ -32,6 +34,13 @@ contextBridge.exposeInMainWorld('api', {
   getListesSauvegardees: () => ipcRenderer.invoke('db:getListesSauvegardees'),
   getListeSauvegardeeItems: (liste_id: number) => ipcRenderer.invoke('db:getListeSauvegardeeItems', liste_id),
   supprimerListeSauvegardee: (id: number) => ipcRenderer.invoke('db:supprimerListeSauvegardee', id),
+  chargerListeSauvegardee: (id: number) => ipcRenderer.invoke('db:chargerListeSauvegardee', id),
+
+  getStatsBudgetMensuel: () => ipcRenderer.invoke('db:getStatsBudgetMensuel'),
+  getStatsProduitsFréquents: () => ipcRenderer.invoke('db:getStatsProduitsFréquents'),
+  getStatsGlobal: () => ipcRenderer.invoke('db:getStatsGlobal'),
+  getStatsRayons: () => ipcRenderer.invoke('db:getStatsRayons'),
+  getStatsTopBudget: () => ipcRenderer.invoke('db:getStatsTopBudget'),
 
   // Import Excel
   importerExcel: () => ipcRenderer.invoke('db:importerExcel'),

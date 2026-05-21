@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, Printer, Trash2, Save, History, Plus } from 'lucide-react';
+import { toast } from 'sonner';
 import { Produit, ItemListe } from '../types';
 import SearchBar from '../components/SearchBar';
 import ItemListeComponent from '../components/ItemListe';
@@ -38,12 +39,14 @@ export default function ListeCourses() {
     await window.api.ajouterAListe(produit.id, quantite);
     const l = await window.api.getListeCourses();
     setListe(l as ItemListe[]);
+    toast.success(`${produit.nom} ajouté à la liste`);
   }
 
   async function handleCreerProduit(nom: string, prix: number, rayon_id: number | null) {
     const id = await window.api.createProduit(nom, prix, rayon_id);
     await window.api.ajouterAListe(id as number, 1);
     await chargerDonnees();
+    toast.success(`"${nom}" créé et ajouté à la liste`);
   }
 
   async function handleQuantite(id: number, quantite: number) {
@@ -51,16 +54,60 @@ export default function ListeCourses() {
     setListe(prev => prev.map(i => i.id === id ? { ...i, quantite } : i));
   }
 
+  async function handlePrix(id: number, prix: number) {
+    await window.api.updatePrixListe(id, prix);
+    setListe(prev => prev.map(i => i.id === id ? { ...i, prix } : i));
+    toast.success('Prix mis à jour pour cette liste');
+  }
+
+  function handleImprimer() {
+    navigate('/apercu');
+  }
+
+  async function handleChargerListe(id: number) {
+    const ok = await confirm({ title: 'Charger cette liste', message: 'La liste actuelle sera remplacée. Continuer ?', confirmLabel: 'Charger', variant: 'default' });
+    if (!ok) return;
+    await window.api.chargerListeSauvegardee(id);
+    await chargerDonnees();
+    setShowHistorique(false);
+    toast.success('Liste chargée');
+  }
+
   async function handleSupprimer(id: number) {
+    const item = liste.find(i => i.id === id);
     await window.api.supprimerDeListe(id);
     setListe(prev => prev.filter(i => i.id !== id));
+    if (item) {
+      toast(`"${item.produit_nom}" retiré de la liste`, {
+        action: {
+          label: 'Restaurer',
+          onClick: async () => {
+            await window.api.ajouterAListe(item.produit_id, item.quantite);
+            const l = await window.api.getListeCourses();
+            setListe(l as ItemListe[]);
+          },
+        },
+      });
+    }
   }
 
   async function handleVider() {
     const ok = await confirm({ title: 'Vider la liste', message: 'Supprimer tous les produits de la liste ?', confirmLabel: 'Vider', variant: 'destructive' });
     if (!ok) return;
+    const snapshot = [...liste];
     await window.api.viderListe();
     setListe([]);
+    toast('Liste vidée', {
+      action: {
+        label: 'Restaurer',
+        onClick: async () => {
+          for (const item of snapshot) {
+            await window.api.ajouterAListe(item.produit_id, item.quantite);
+          }
+          await chargerDonnees();
+        },
+      },
+    });
   }
 
   function handleOuvrirSauvegarde() {
@@ -74,6 +121,7 @@ export default function ListeCourses() {
     if (!nomSauvegarde.trim()) return;
     await window.api.sauvegarderListe(nomSauvegarde.trim());
     setShowSauvegardeModal(false);
+    toast.success(`Liste "${nomSauvegarde.trim()}" sauvegardée`);
   }
 
   const total = liste.reduce((sum, i) => sum + i.prix * i.quantite, 0);
@@ -96,17 +144,17 @@ export default function ListeCourses() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50">
       {/* Toolbar */}
       <div className="bg-white border-b border-gray-200 px-6 py-3 print:hidden">
-        <div className="max-w-2xl mx-auto flex items-center justify-end gap-2">
+        <div className="max-w-4xl mx-auto flex items-center justify-end gap-2">
           {liste.length > 0 && (
             <Badge variant="default">{nbCoches}/{liste.length}</Badge>
           )}
           <Button variant="outline" size="sm" onClick={() => setShowHistorique(true)}>
             <History size={15} className="mr-1" /> Historique
           </Button>
-          <Button variant="outline" size="sm" onClick={() => navigate('/apercu')} disabled={liste.length === 0}>
+          <Button variant="outline" size="sm" onClick={handleImprimer} disabled={liste.length === 0}>
             <Printer size={15} className="mr-1" /> Imprimer
           </Button>
           <Button variant="outline" size="sm" onClick={handleOuvrirSauvegarde} disabled={liste.length === 0}>
@@ -118,7 +166,7 @@ export default function ListeCourses() {
         </div>
       </div>
 
-      <main className="max-w-2xl mx-auto px-6 py-6">
+      <main className="max-w-4xl mx-auto px-6 py-6">
         {/* Barre de recherche */}
         <div className="mb-6 print:hidden flex gap-2">
           <div className="flex-1">
@@ -145,6 +193,7 @@ export default function ListeCourses() {
               item={item}
               onQuantite={handleQuantite}
               onSupprimer={handleSupprimer}
+              onPrix={handlePrix}
             />
           ))}
         </div>
@@ -212,7 +261,7 @@ export default function ListeCourses() {
 
       {/* Modal historique */}
       {showHistorique && (
-        <HistoriqueListes onClose={() => setShowHistorique(false)} />
+        <HistoriqueListes onClose={() => setShowHistorique(false)} onCharger={handleChargerListe} />
       )}
 
       {showNouveauProduit && (

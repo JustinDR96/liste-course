@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { X, Trash2, ChevronDown, ChevronRight, ShoppingBag } from 'lucide-react';
+import { X, Trash2, ChevronDown, ChevronRight, ShoppingBag, RotateCcw } from 'lucide-react';
 import { Button } from './ui/button';
 import { useDialog } from './ui/dialog';
 
@@ -20,9 +20,10 @@ interface ItemSauvegarde {
 
 interface Props {
   onClose: () => void;
+  onCharger: (id: number) => void;
 }
 
-export default function HistoriqueListes({ onClose }: Props) {
+export default function HistoriqueListes({ onClose, onCharger }: Props) {
   const { confirm } = useDialog();
   const [listes, setListes] = useState<ListeSauvegardee[]>([]);
   const [expanded, setExpanded] = useState<number | null>(null);
@@ -96,6 +97,13 @@ export default function HistoriqueListes({ onClose }: Props) {
                   <p className="text-xs text-gray-400">{formatDate(liste.date_creation)}</p>
                 </div>
                 <span className="text-sm font-semibold text-blue-600 shrink-0">{liste.total.toFixed(2)} €</span>
+                <button
+                  onClick={e => { e.stopPropagation(); onCharger(liste.id); }}
+                  className="text-gray-300 hover:text-blue-500 transition-colors ml-1"
+                  title="Charger cette liste"
+                >
+                  <RotateCcw size={15} />
+                </button>
                 <button
                   onClick={e => { e.stopPropagation(); handleSupprimer(liste.id); }}
                   className="text-gray-300 hover:text-red-500 transition-colors ml-1"

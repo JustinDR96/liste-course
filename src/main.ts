@@ -4,10 +4,11 @@ import https from 'node:https';
 import started from 'electron-squirrel-startup';
 import {
   initDatabase,
-  getRayons, createRayon, updateRayon, deleteRayon, countProduitsInRayon, getProduitsParRayon,
+  getRayons, createRayon, updateRayon, updateRayonNom, deleteRayon, countProduitsInRayon, getProduitsParRayon,
   getProduits, createProduit, updateProduit, deleteProduit,
-  getListeCourses, ajouterAListe, cocherProduit, updateQuantite, supprimerDeListe, viderListe,
-  sauvegarderListe, getListesSauvegardees, getListeSauvegardeeItems, supprimerListeSauvegardee,
+  getListeCourses, ajouterAListe, cocherProduit, updateQuantite, updatePrixListe, supprimerDeListe, viderListe,
+  sauvegarderListe, getListesSauvegardees, getListeSauvegardeeItems, supprimerListeSauvegardee, chargerListeSauvegardee,
+  getStatsBudgetMensuel, getStatsProduitsFréquents, getStatsGlobal, getStatsRayons, getStatsTopBudget,
   importerExcel,
 } from './database';
 
@@ -29,6 +30,7 @@ app.setPath('userData', dataDir);
 ipcMain.handle('db:getRayons', () => getRayons());
 ipcMain.handle('db:createRayon', (_, nom: string, ordre: number) => createRayon(nom, ordre));
 ipcMain.handle('db:updateRayon', (_, id: number, nom: string) => updateRayon(id, nom));
+ipcMain.handle('db:updateRayonNom', (_, id: number, nom: string) => updateRayonNom(id, nom));
 ipcMain.handle('db:deleteRayon', (_, id: number) => deleteRayon(id));
 ipcMain.handle('db:countProduitsInRayon', (_, id: number) => countProduitsInRayon(id));
 ipcMain.handle('db:getProduitsParRayon', (_, rayon_id: number) => getProduitsParRayon(rayon_id));
@@ -42,6 +44,7 @@ ipcMain.handle('db:getListeCourses', () => getListeCourses());
 ipcMain.handle('db:ajouterAListe', (_, produit_id: number, quantite: number) => ajouterAListe(produit_id, quantite));
 ipcMain.handle('db:cocherProduit', (_, id: number, coche: boolean) => cocherProduit(id, coche));
 ipcMain.handle('db:updateQuantite', (_, id: number, quantite: number) => updateQuantite(id, quantite));
+ipcMain.handle('db:updatePrixListe', (_, id: number, prix: number) => updatePrixListe(id, prix));
 ipcMain.handle('db:supprimerDeListe', (_, id: number) => supprimerDeListe(id));
 ipcMain.handle('db:viderListe', () => viderListe());
 
@@ -49,6 +52,13 @@ ipcMain.handle('db:sauvegarderListe', (_, nom: string) => sauvegarderListe(nom))
 ipcMain.handle('db:getListesSauvegardees', () => getListesSauvegardees());
 ipcMain.handle('db:getListeSauvegardeeItems', (_, liste_id: number) => getListeSauvegardeeItems(liste_id));
 ipcMain.handle('db:supprimerListeSauvegardee', (_, id: number) => supprimerListeSauvegardee(id));
+ipcMain.handle('db:chargerListeSauvegardee', (_, id: number) => chargerListeSauvegardee(id));
+
+ipcMain.handle('db:getStatsBudgetMensuel', () => getStatsBudgetMensuel());
+ipcMain.handle('db:getStatsProduitsFréquents', () => getStatsProduitsFréquents());
+ipcMain.handle('db:getStatsGlobal', () => getStatsGlobal());
+ipcMain.handle('db:getStatsRayons', () => getStatsRayons());
+ipcMain.handle('db:getStatsTopBudget', () => getStatsTopBudget());
 
 ipcMain.handle('db:importerExcel', async () => {
   const { canceled, filePaths } = await dialog.showOpenDialog({

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import { Search, Pencil, Trash2, FileUp } from 'lucide-react';
 import { Produit, Rayon } from '../types';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
-import { cn } from '../lib/utils';
 import FormulaireProduit from '../components/FormulaireProduit';
 import { useDialog } from '../components/ui/dialog';
 
@@ -27,7 +27,7 @@ function ModaleEdition({ produit, rayons, onSave, onClose }: ModaleProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-4xl p-6">
         <h2 className="text-base font-semibold text-gray-800 mb-4">Modifier le produit</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -62,7 +62,7 @@ function ModaleEdition({ produit, rayons, onSave, onClose }: ModaleProps) {
 }
 
 export default function Produits() {
-  const { confirm, alert } = useDialog();
+  const { confirm } = useDialog();
   const [produits, setProduits] = useState<Produit[]>([]);
   const [rayons, setRayons] = useState<Rayon[]>([]);
   const [query, setQuery] = useState('');
@@ -82,13 +82,14 @@ export default function Produits() {
     await window.api.updateProduit(enEdition!.id, nom, prix, rayon_id);
     setEnEdition(null);
     await charger();
+    toast.success(`"${nom}" mis à jour`);
   }
 
   async function handleImportExcel() {
     const result = await window.api.importerExcel();
     if (result.canceled) return;
-    await alert('Import terminé', `${result.produits} produits et ${result.rayons} rayons ajoutés.`);
     await charger();
+    toast.success(`Import terminé — ${result.produits} produits, ${result.rayons} rayons ajoutés`);
   }
 
   async function handleDelete(produit: Produit) {
@@ -96,11 +97,21 @@ export default function Produits() {
     if (!ok) return;
     await window.api.deleteProduit(produit.id);
     setProduits(prev => prev.filter(p => p.id !== produit.id));
+    toast(`"${produit.nom}" supprimé`, {
+      action: {
+        label: 'Restaurer',
+        onClick: async () => {
+          await window.api.createProduit(produit.nom, produit.prix, produit.rayon_id ?? null);
+          await charger();
+        },
+      },
+    });
   }
 
   async function handleAjouter(nom: string, prix: number, rayon_id: number | null) {
     await window.api.createProduit(nom, prix, rayon_id);
     await charger();
+    toast.success(`"${nom}" ajouté au catalogue`);
   }
 
   const filtres = produits.filter(p =>
@@ -109,9 +120,9 @@ export default function Produits() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50">
       <div className="bg-white border-b border-gray-200 px-6 py-3">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Badge variant="outline">{produits.length} produits</Badge>
             <Button variant="outline" size="sm" onClick={handleImportExcel}>
@@ -130,7 +141,7 @@ export default function Produits() {
         </div>
       </div>
 
-      <main className="max-w-3xl mx-auto px-6 py-6">
+      <main className="max-w-4xl mx-auto px-6 py-6">
         <FormulaireProduit
           rayons={rayons}
           onAjouter={handleAjouter}

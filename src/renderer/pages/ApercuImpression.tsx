@@ -12,6 +12,16 @@ export default function ApercuImpression() {
     window.api.getListeCourses().then(l => setListe(l as ItemListe[]));
   }, []);
 
+  useEffect(() => {
+    async function handleAfterPrint() {
+      const now = new Date();
+      const nom = `Courses du ${now.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })}`;
+      await window.api.sauvegarderListe(nom);
+    }
+    window.addEventListener('afterprint', handleAfterPrint);
+    return () => window.removeEventListener('afterprint', handleAfterPrint);
+  }, []);
+
   const total = liste.reduce((sum, i) => sum + i.prix * i.quantite, 0);
 
   // Tri pour l'impression uniquement par nom de rayon parsé :
@@ -33,7 +43,7 @@ export default function ApercuImpression() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="bg-gray-100">
       {/* Barre d'outils — masquée à l'impression */}
       <div className="print:hidden bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-3">
         <Button variant="outline" size="sm" onClick={() => navigate('/liste')}>

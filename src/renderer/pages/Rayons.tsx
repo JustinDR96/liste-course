@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import { Pencil, Check, X, Plus, Trash2 } from 'lucide-react';
 import { Rayon, Produit } from '../types';
 import { Input } from '../components/ui/input';
@@ -69,6 +70,7 @@ export default function Rayons() {
   const [rayons, setRayons] = useState<Rayon[]>([]);
   const [enEdition, setEnEdition] = useState<number | null>(null);
   const [valeurEdition, setValeurEdition] = useState('');
+  const [codeEdition, setCodeEdition] = useState('');
   const [nouveauNom, setNouveauNom] = useState('');
   const [rayonSelectionne, setRayonSelectionne] = useState<Rayon | null>(null);
 
@@ -85,12 +87,17 @@ export default function Rayons() {
     e.stopPropagation();
     setEnEdition(rayon.id);
     setValeurEdition(rayon.label ?? '');
+    setCodeEdition(rayon.nom);
   }
 
   async function saveEdit(id: number) {
-    await window.api.updateRayon(id, valeurEdition.trim());
-    setRayons(prev => prev.map(r => r.id === id ? { ...r, label: valeurEdition.trim() } : r));
+    const newCode = codeEdition.trim();
+    const newLabel = valeurEdition.trim();
+    if (newCode) await window.api.updateRayonNom(id, newCode);
+    await window.api.updateRayon(id, newLabel);
+    setRayons(prev => prev.map(r => r.id === id ? { ...r, nom: newCode || r.nom, label: newLabel } : r));
     setEnEdition(null);
+    toast.success('Rayon mis à jour');
   }
 
   async function handleDelete(e: React.MouseEvent, rayon: Rayon) {
@@ -103,6 +110,15 @@ export default function Rayons() {
     if (!ok) return;
     await window.api.deleteRayon(rayon.id);
     setRayons(prev => prev.filter(r => r.id !== rayon.id));
+    toast(`Rayon "${rayon.nom}" supprimé`, {
+      action: {
+        label: 'Restaurer',
+        onClick: async () => {
+          await window.api.createRayon(rayon.nom, rayon.numero_ordre);
+          await charger();
+        },
+      },
+    });
   }
 
   async function handleAjouter(e: React.FormEvent) {
@@ -111,17 +127,18 @@ export default function Rayons() {
     await window.api.createRayon(nouveauNom.trim(), rayons.length);
     setNouveauNom('');
     await charger();
+    toast.success(`Rayon "${nouveauNom.trim()}" ajouté`);
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50">
       <div className="bg-white border-b border-gray-200 px-6 py-3">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <Badge variant="outline">{rayons.length} rayons</Badge>
         </div>
       </div>
 
-      <main className="max-w-2xl mx-auto px-6 py-6">
+      <main className="max-w-4xl mx-auto px-6 py-6">
         {/* Formulaire ajout rayon */}
         <form onSubmit={handleAjouter} className="flex gap-2 mb-6">
           <Input
@@ -148,27 +165,37 @@ export default function Rayons() {
               className="grid grid-cols-[80px_1fr_100px] items-center px-4 py-2.5 hover:bg-gray-50 cursor-pointer transition-colors"
               onClick={() => enEdition !== rayon.id && setRayonSelectionne(rayon)}
             >
-              {/* Code immuable */}
-              <span className="text-sm font-mono text-gray-400">{rayon.nom}</span>
-
-              {/* Label éditable */}
               {enEdition === rayon.id ? (
-                <Input
-                  value={valeurEdition}
-                  onChange={e => setValeurEdition(e.target.value)}
-                  onKeyDown={e => {
-                    if (e.key === 'Enter') saveEdit(rayon.id);
-                    if (e.key === 'Escape') setEnEdition(null);
-                  }}
-                  onClick={e => e.stopPropagation()}
-                  placeholder="Nom du rayon..."
-                  className="h-7 text-sm"
-                  autoFocus
-                />
+                <div className="col-span-2 flex gap-2 pr-2" onClick={e => e.stopPropagation()}>
+                  <Input
+                    value={codeEdition}
+                    onChange={e => setCodeEdition(e.target.value)}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') saveEdit(rayon.id);
+                      if (e.key === 'Escape') setEnEdition(null);
+                    }}
+                    placeholder="Code..."
+                    className="h-7 text-sm font-mono w-24 shrink-0"
+                    autoFocus
+                  />
+                  <Input
+                    value={valeurEdition}
+                    onChange={e => setValeurEdition(e.target.value)}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') saveEdit(rayon.id);
+                      if (e.key === 'Escape') setEnEdition(null);
+                    }}
+                    placeholder="Nom du rayon..."
+                    className="h-7 text-sm flex-1"
+                  />
+                </div>
               ) : (
-                <span className="text-sm text-gray-700">
-                  {rayon.label || <span className="text-gray-300 italic">— sans nom</span>}
-                </span>
+                <>
+                  <span className="text-sm font-mono text-gray-400">{rayon.nom}</span>
+                  <span className="text-sm text-gray-700">
+                    {rayon.label || <span className="text-gray-300 italic">— sans nom</span>}
+                  </span>
+                </>
               )}
 
               {/* Actions */}

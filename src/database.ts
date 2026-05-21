@@ -95,7 +95,21 @@ function createTables(): void {
 }
 
 function runMigrations(): void {
+  // Sauvegarde de la DB avant migration (seulement si elle existait déjà avant ce lancement)
+  const backupPath = dbPath + '.backup';
+  if (fs.existsSync(dbPath) && !fs.existsSync(backupPath)) {
+    fs.copyFileSync(dbPath, backupPath);
+  }
+
+  // Migrations additives — toujours dans un try/catch
   try { db.run('ALTER TABLE rayons ADD COLUMN label TEXT'); } catch {}
+  try { db.run('ALTER TABLE liste_courses ADD COLUMN prix_override REAL'); } catch {}
+
+  // Garde-fous : colonnes potentiellement manquantes selon l'ancienne version
+  try { db.run('ALTER TABLE rayons ADD COLUMN numero_ordre INTEGER DEFAULT 0'); } catch {}
+  try { db.run('ALTER TABLE produits ADD COLUMN prix REAL DEFAULT 0.0'); } catch {}
+  try { db.run('ALTER TABLE liste_courses ADD COLUMN coche INTEGER DEFAULT 0'); } catch {}
+  try { db.run('ALTER TABLE liste_courses ADD COLUMN quantite INTEGER DEFAULT 1'); } catch {}
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -130,6 +144,11 @@ export function createRayon(nom: string, numero_ordre = 0): number {
 
 export function updateRayon(id: number, label: string): void {
   db.run('UPDATE rayons SET label = ? WHERE id = ?', [label, id]);
+  save();
+}
+
+export function updateRayonNom(id: number, nom: string): void {
+  db.run('UPDATE rayons SET nom = ? WHERE id = ?', [nom, id]);
   save();
 }
 
@@ -179,12 +198,19 @@ export function deleteProduit(id: number): void {
 
 export function getListeCourses() {
   return all(`
-    SELECT lc.*, p.nom AS produit_nom, p.prix, r.nom AS rayon_nom, r.numero_ordre
+    SELECT lc.*, p.nom AS produit_nom,
+           COALESCE(lc.prix_override, p.prix) AS prix,
+           r.nom AS rayon_nom, r.numero_ordre
     FROM liste_courses lc
     JOIN produits p ON lc.produit_id = p.id
     LEFT JOIN rayons r ON p.rayon_id = r.id
     ORDER BY lc.id ASC
   `);
+}
+
+export function updatePrixListe(id: number, prix: number): void {
+  db.run('UPDATE liste_courses SET prix_override = ? WHERE id = ?', [prix, id]);
+  save();
 }
 
 export function ajouterAListe(produit_id: number, quantite = 1): number {
@@ -242,10 +268,93 @@ export function getListeSauvegardeeItems(liste_id: number) {
   );
 }
 
+export function chargerListeSauvegardee(id: number): void {
+  // Vider la liste actuelle
+  db.run('DELETE FROM liste_courses');
+  // Récupérer les items sauvegardés
+  const stmt = db.prepare('SELECT * FROM listes_sauvegardees_items WHERE liste_id = ?');
+  stmt.bind([id]);
+  const items: Record<string, unknown>[] = [];
+  while (stmt.step()) items.push(stmt.getAsObject());
+  stmt.free();
+  // Réinsérer chaque item en cherchant le produit par nom
+  for (const item of items) {
+    const res = db.exec('SELECT id FROM produits WHERE nom = ? LIMIT 1', [item.produit_nom as string]);
+    if (res[0]?.values[0]) {
+      const produit_id = res[0].values[0][0] as number;
+      db.run(
+        'INSERT INTO liste_courses (produit_id, quantite, prix_override) VALUES (?, ?, ?)',
+        [produit_id, item.quantite as number, item.prix as number]
+      );
+    }
+  }
+  save();
+}
+
 export function supprimerListeSauvegardee(id: number): void {
   db.run('DELETE FROM listes_sauvegardees_items WHERE liste_id = ?', [id]);
   db.run('DELETE FROM listes_sauvegardees WHERE id = ?', [id]);
   save();
+}
+
+// ─── Statistiques ─────────────────────────────────────────────────────────────
+
+export function getStatsBudgetMensuel() {
+  return all(`
+    SELECT strftime('%Y-%m', date_creation) AS mois,
+           ROUND(SUM(total), 2) AS budget_total,
+           COUNT(*) AS nb_listes
+    FROM listes_sauvegardees
+    GROUP BY mois
+    ORDER BY mois DESC
+    LIMIT 12
+  `);
+}
+
+export function getStatsProduitsFréquents() {
+  return all(`
+    SELECT produit_nom,
+           COUNT(*) AS nb_apparitions,
+           SUM(quantite) AS quantite_totale
+    FROM listes_sauvegardees_items
+    GROUP BY produit_nom
+    ORDER BY nb_apparitions DESC
+    LIMIT 10
+  `);
+}
+
+export function getStatsGlobal() {
+  return all(`
+    SELECT ROUND(AVG(total), 2) AS moyenne_par_liste,
+           ROUND(MIN(total), 2) AS liste_min,
+           ROUND(MAX(total), 2) AS liste_max,
+           COUNT(*) AS nb_listes_total,
+           ROUND(SUM(total), 2) AS total_global
+    FROM listes_sauvegardees
+  `);
+}
+
+export function getStatsRayons() {
+  return all(`
+    SELECT COALESCE(rayon_nom, 'Sans rayon') AS rayon_nom,
+           ROUND(SUM(quantite * prix), 2) AS depense_totale
+    FROM listes_sauvegardees_items
+    GROUP BY rayon_nom
+    ORDER BY depense_totale DESC
+    LIMIT 8
+  `);
+}
+
+export function getStatsTopBudget() {
+  return all(`
+    SELECT produit_nom,
+           ROUND(SUM(quantite * prix), 2) AS cout_total,
+           ROUND(AVG(prix), 2) AS prix_moyen
+    FROM listes_sauvegardees_items
+    GROUP BY produit_nom
+    ORDER BY cout_total DESC
+    LIMIT 10
+  `);
 }
 
 // ─── Import Excel ─────────────────────────────────────────────────────────────
