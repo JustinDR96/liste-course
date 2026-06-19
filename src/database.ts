@@ -357,7 +357,26 @@ export function getStatsTopBudget() {
   `);
 }
 
-// ─── Import Excel ─────────────────────────────────────────────────────────────
+// ─── Export / Import Excel ────────────────────────────────────────────────────
+
+export function exporterExcel(filePath: string): void {
+  const produits = all(`
+    SELECT p.nom, p.prix, r.nom AS rayon_nom
+    FROM produits p
+    LEFT JOIN rayons r ON p.rayon_id = r.id
+    ORDER BY r.numero_ordre ASC, p.nom ASC
+  `);
+
+  const rows = [
+    ['Rayon', 'Produit', 'Prix'],
+    ...produits.map(p => [p.rayon_nom ?? '', p.nom, p.prix]),
+  ];
+
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  XLSX.utils.book_append_sheet(wb, ws, 'Produits');
+  XLSX.writeFile(wb, filePath);
+}
 
 export async function importerExcel(filePath: string): Promise<{ rayons: number; produits: number }> {
   const wb = XLSX.readFile(filePath);

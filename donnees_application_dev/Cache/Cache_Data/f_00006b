@@ -1,6 +1,501 @@
-import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/renderer/styles/global.css");import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from "/@vite/client"
-const __vite__id = "C:/Users/justi/Desktop/Development/projet_pap/liste-course/src/renderer/styles/global.css"
-const __vite__css = "/*! tailwindcss v4.3.0 | MIT License | https://tailwindcss.com */\n@layer properties;\n@layer theme, base, components, utilities;\n@layer theme {\n  :root, :host {\n    --font-sans: ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\",\n      \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\";\n    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\",\n      \"Courier New\", monospace;\n    --color-red-100: oklch(93.6% 0.032 17.717);\n    --color-red-500: oklch(63.7% 0.237 25.331);\n    --color-red-600: oklch(57.7% 0.245 27.325);\n    --color-red-700: oklch(50.5% 0.213 27.518);\n    --color-green-100: oklch(96.2% 0.044 156.743);\n    --color-green-700: oklch(52.7% 0.154 150.069);\n    --color-blue-50: oklch(97% 0.014 254.604);\n    --color-blue-100: oklch(93.2% 0.032 255.585);\n    --color-blue-200: oklch(88.2% 0.059 254.128);\n    --color-blue-400: oklch(70.7% 0.165 254.624);\n    --color-blue-600: oklch(54.6% 0.245 262.881);\n    --color-blue-700: oklch(48.8% 0.243 264.376);\n    --color-gray-50: oklch(98.5% 0.002 247.839);\n    --color-gray-100: oklch(96.7% 0.003 264.542);\n    --color-gray-200: oklch(92.8% 0.006 264.531);\n    --color-gray-300: oklch(87.2% 0.01 258.338);\n    --color-gray-400: oklch(70.7% 0.022 261.325);\n    --color-gray-500: oklch(55.1% 0.027 264.364);\n    --color-gray-600: oklch(44.6% 0.03 256.802);\n    --color-gray-700: oklch(37.3% 0.034 259.733);\n    --color-gray-800: oklch(27.8% 0.033 256.848);\n    --color-white: #fff;\n    --spacing: 0.25rem;\n    --container-2xl: 42rem;\n    --text-xs: 0.75rem;\n    --text-xs--line-height: calc(1 / 0.75);\n    --text-sm: 0.875rem;\n    --text-sm--line-height: calc(1.25 / 0.875);\n    --text-base: 1rem;\n    --text-base--line-height: calc(1.5 / 1);\n    --text-lg: 1.125rem;\n    --text-lg--line-height: calc(1.75 / 1.125);\n    --text-xl: 1.25rem;\n    --text-xl--line-height: calc(1.75 / 1.25);\n    --text-2xl: 1.5rem;\n    --text-2xl--line-height: calc(2 / 1.5);\n    --font-weight-medium: 500;\n    --font-weight-semibold: 600;\n    --font-weight-bold: 700;\n    --tracking-wider: 0.05em;\n    --radius-sm: 0.25rem;\n    --radius-md: 0.375rem;\n    --radius-lg: 0.5rem;\n    --default-transition-duration: 150ms;\n    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    --default-font-family: var(--font-sans);\n    --default-mono-font-family: var(--font-mono);\n  }\n}\n@layer base {\n  *, ::after, ::before, ::backdrop, ::file-selector-button {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n    border: 0 solid;\n  }\n  html, :host {\n    line-height: 1.5;\n    -webkit-text-size-adjust: 100%;\n    tab-size: 4;\n    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\");\n    font-feature-settings: var(--default-font-feature-settings, normal);\n    font-variation-settings: var(--default-font-variation-settings, normal);\n    -webkit-tap-highlight-color: transparent;\n  }\n  hr {\n    height: 0;\n    color: inherit;\n    border-top-width: 1px;\n  }\n  abbr:where([title]) {\n    -webkit-text-decoration: underline dotted;\n    text-decoration: underline dotted;\n  }\n  h1, h2, h3, h4, h5, h6 {\n    font-size: inherit;\n    font-weight: inherit;\n  }\n  a {\n    color: inherit;\n    -webkit-text-decoration: inherit;\n    text-decoration: inherit;\n  }\n  b, strong {\n    font-weight: bolder;\n  }\n  code, kbd, samp, pre {\n    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace);\n    font-feature-settings: var(--default-mono-font-feature-settings, normal);\n    font-variation-settings: var(--default-mono-font-variation-settings, normal);\n    font-size: 1em;\n  }\n  small {\n    font-size: 80%;\n  }\n  sub, sup {\n    font-size: 75%;\n    line-height: 0;\n    position: relative;\n    vertical-align: baseline;\n  }\n  sub {\n    bottom: -0.25em;\n  }\n  sup {\n    top: -0.5em;\n  }\n  table {\n    text-indent: 0;\n    border-color: inherit;\n    border-collapse: collapse;\n  }\n  :-moz-focusring {\n    outline: auto;\n  }\n  progress {\n    vertical-align: baseline;\n  }\n  summary {\n    display: list-item;\n  }\n  ol, ul, menu {\n    list-style: none;\n  }\n  img, svg, video, canvas, audio, iframe, embed, object {\n    display: block;\n    vertical-align: middle;\n  }\n  img, video {\n    max-width: 100%;\n    height: auto;\n  }\n  button, input, select, optgroup, textarea, ::file-selector-button {\n    font: inherit;\n    font-feature-settings: inherit;\n    font-variation-settings: inherit;\n    letter-spacing: inherit;\n    color: inherit;\n    border-radius: 0;\n    background-color: transparent;\n    opacity: 1;\n  }\n  :where(select:is([multiple], [size])) optgroup {\n    font-weight: bolder;\n  }\n  :where(select:is([multiple], [size])) optgroup option {\n    padding-inline-start: 20px;\n  }\n  ::file-selector-button {\n    margin-inline-end: 4px;\n  }\n  ::placeholder {\n    opacity: 1;\n  }\n  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {\n    ::placeholder {\n      color: currentcolor;\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, currentcolor 50%, transparent);\n      }\n    }\n  }\n  textarea {\n    resize: vertical;\n  }\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n  ::-webkit-date-and-time-value {\n    min-height: 1lh;\n    text-align: inherit;\n  }\n  ::-webkit-datetime-edit {\n    display: inline-flex;\n  }\n  ::-webkit-datetime-edit-fields-wrapper {\n    padding: 0;\n  }\n  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {\n    padding-block: 0;\n  }\n  ::-webkit-calendar-picker-indicator {\n    line-height: 1;\n  }\n  :-moz-ui-invalid {\n    box-shadow: none;\n  }\n  button, input:where([type=\"button\"], [type=\"reset\"], [type=\"submit\"]), ::file-selector-button {\n    appearance: button;\n  }\n  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {\n    height: auto;\n  }\n  [hidden]:where(:not([hidden=\"until-found\"])) {\n    display: none !important;\n  }\n}\n@layer utilities {\n  .\\@container {\n    container-type: inline-size;\n  }\n  .collapse {\n    visibility: collapse;\n  }\n  .invisible {\n    visibility: hidden;\n  }\n  .visible {\n    visibility: visible;\n  }\n  .sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip-path: inset(50%);\n    white-space: nowrap;\n    border-width: 0;\n  }\n  .not-sr-only {\n    position: static;\n    width: auto;\n    height: auto;\n    padding: 0;\n    margin: 0;\n    overflow: visible;\n    clip-path: none;\n    white-space: normal;\n  }\n  .absolute {\n    position: absolute;\n  }\n  .fixed {\n    position: fixed;\n  }\n  .relative {\n    position: relative;\n  }\n  .static {\n    position: static;\n  }\n  .sticky {\n    position: sticky;\n  }\n  .top-2 {\n    top: calc(var(--spacing) * 2);\n  }\n  .right-3 {\n    right: calc(var(--spacing) * 3);\n  }\n  .isolate {\n    isolation: isolate;\n  }\n  .isolation-auto {\n    isolation: auto;\n  }\n  .z-10 {\n    z-index: 10;\n  }\n  .container {\n    width: 100%;\n    @media (width >= 40rem) {\n      max-width: 40rem;\n    }\n    @media (width >= 48rem) {\n      max-width: 48rem;\n    }\n    @media (width >= 64rem) {\n      max-width: 64rem;\n    }\n    @media (width >= 80rem) {\n      max-width: 80rem;\n    }\n    @media (width >= 96rem) {\n      max-width: 96rem;\n    }\n  }\n  .mx-auto {\n    margin-inline: auto;\n  }\n  .mt-1 {\n    margin-top: calc(var(--spacing) * 1);\n  }\n  .mt-6 {\n    margin-top: calc(var(--spacing) * 6);\n  }\n  .mr-1 {\n    margin-right: calc(var(--spacing) * 1);\n  }\n  .mb-2 {\n    margin-bottom: calc(var(--spacing) * 2);\n  }\n  .mb-3 {\n    margin-bottom: calc(var(--spacing) * 3);\n  }\n  .mb-4 {\n    margin-bottom: calc(var(--spacing) * 4);\n  }\n  .mb-6 {\n    margin-bottom: calc(var(--spacing) * 6);\n  }\n  .ml-2 {\n    margin-left: calc(var(--spacing) * 2);\n  }\n  .block {\n    display: block;\n  }\n  .contents {\n    display: contents;\n  }\n  .flex {\n    display: flex;\n  }\n  .flow-root {\n    display: flow-root;\n  }\n  .grid {\n    display: grid;\n  }\n  .hidden {\n    display: none;\n  }\n  .inline {\n    display: inline;\n  }\n  .inline-block {\n    display: inline-block;\n  }\n  .inline-flex {\n    display: inline-flex;\n  }\n  .inline-grid {\n    display: inline-grid;\n  }\n  .inline-table {\n    display: inline-table;\n  }\n  .list-item {\n    display: list-item;\n  }\n  .table {\n    display: table;\n  }\n  .table-caption {\n    display: table-caption;\n  }\n  .table-cell {\n    display: table-cell;\n  }\n  .table-column {\n    display: table-column;\n  }\n  .table-column-group {\n    display: table-column-group;\n  }\n  .table-footer-group {\n    display: table-footer-group;\n  }\n  .table-header-group {\n    display: table-header-group;\n  }\n  .table-row {\n    display: table-row;\n  }\n  .table-row-group {\n    display: table-row-group;\n  }\n  .h-4 {\n    height: calc(var(--spacing) * 4);\n  }\n  .h-8 {\n    height: calc(var(--spacing) * 8);\n  }\n  .h-9 {\n    height: calc(var(--spacing) * 9);\n  }\n  .h-11 {\n    height: calc(var(--spacing) * 11);\n  }\n  .max-h-60 {\n    max-height: calc(var(--spacing) * 60);\n  }\n  .min-h-screen {\n    min-height: 100vh;\n  }\n  .w-4 {\n    width: calc(var(--spacing) * 4);\n  }\n  .w-9 {\n    width: calc(var(--spacing) * 9);\n  }\n  .w-16 {\n    width: calc(var(--spacing) * 16);\n  }\n  .w-full {\n    width: 100%;\n  }\n  .max-w-2xl {\n    max-width: var(--container-2xl);\n  }\n  .min-w-0 {\n    min-width: calc(var(--spacing) * 0);\n  }\n  .flex-1 {\n    flex: 1;\n  }\n  .flex-shrink {\n    flex-shrink: 1;\n  }\n  .flex-shrink-0 {\n    flex-shrink: 0;\n  }\n  .shrink {\n    flex-shrink: 1;\n  }\n  .shrink-0 {\n    flex-shrink: 0;\n  }\n  .flex-grow {\n    flex-grow: 1;\n  }\n  .grow {\n    flex-grow: 1;\n  }\n  .border-collapse {\n    border-collapse: collapse;\n  }\n  .translate-none {\n    translate: none;\n  }\n  .scale-3d {\n    scale: var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z);\n  }\n  .transform {\n    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);\n  }\n  .cursor-pointer {\n    cursor: pointer;\n  }\n  .touch-pinch-zoom {\n    --tw-pinch-zoom: pinch-zoom;\n    touch-action: var(--tw-pan-x,) var(--tw-pan-y,) var(--tw-pinch-zoom,);\n  }\n  .resize {\n    resize: both;\n  }\n  .columns-2 {\n    columns: 2;\n  }\n  .columns-3 {\n    columns: 3;\n  }\n  .columns-4 {\n    columns: 4;\n  }\n  .flex-wrap {\n    flex-wrap: wrap;\n  }\n  .items-center {\n    align-items: center;\n  }\n  .justify-between {\n    justify-content: space-between;\n  }\n  .justify-center {\n    justify-content: center;\n  }\n  .justify-end {\n    justify-content: flex-end;\n  }\n  .gap-2 {\n    gap: calc(var(--spacing) * 2);\n  }\n  .gap-3 {\n    gap: calc(var(--spacing) * 3);\n  }\n  .space-y-1 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-1\\.5 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 1.5) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-5 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-reverse {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 1;\n    }\n  }\n  .space-x-reverse {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 1;\n    }\n  }\n  .divide-x {\n    :where(& > :not(:last-child)) {\n      --tw-divide-x-reverse: 0;\n      border-inline-style: var(--tw-border-style);\n      border-inline-start-width: calc(1px * var(--tw-divide-x-reverse));\n      border-inline-end-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));\n    }\n  }\n  .divide-y {\n    :where(& > :not(:last-child)) {\n      --tw-divide-y-reverse: 0;\n      border-bottom-style: var(--tw-border-style);\n      border-top-style: var(--tw-border-style);\n      border-top-width: calc(1px * var(--tw-divide-y-reverse));\n      border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n    }\n  }\n  .divide-y-reverse {\n    :where(& > :not(:last-child)) {\n      --tw-divide-y-reverse: 1;\n    }\n  }\n  .divide-gray-100 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-gray-100);\n    }\n  }\n  .truncate {\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n  }\n  .overflow-hidden {\n    overflow: hidden;\n  }\n  .overflow-y-auto {\n    overflow-y: auto;\n  }\n  .rounded {\n    border-radius: 0.25rem;\n  }\n  .rounded-full {\n    border-radius: calc(infinity * 1px);\n  }\n  .rounded-lg {\n    border-radius: var(--radius-lg);\n  }\n  .rounded-md {\n    border-radius: var(--radius-md);\n  }\n  .rounded-sm {\n    border-radius: var(--radius-sm);\n  }\n  .rounded-s {\n    border-start-start-radius: 0.25rem;\n    border-end-start-radius: 0.25rem;\n  }\n  .rounded-ss {\n    border-start-start-radius: 0.25rem;\n  }\n  .rounded-e {\n    border-start-end-radius: 0.25rem;\n    border-end-end-radius: 0.25rem;\n  }\n  .rounded-se {\n    border-start-end-radius: 0.25rem;\n  }\n  .rounded-ee {\n    border-end-end-radius: 0.25rem;\n  }\n  .rounded-es {\n    border-end-start-radius: 0.25rem;\n  }\n  .rounded-t {\n    border-top-left-radius: 0.25rem;\n    border-top-right-radius: 0.25rem;\n  }\n  .rounded-l {\n    border-top-left-radius: 0.25rem;\n    border-bottom-left-radius: 0.25rem;\n  }\n  .rounded-tl {\n    border-top-left-radius: 0.25rem;\n  }\n  .rounded-r {\n    border-top-right-radius: 0.25rem;\n    border-bottom-right-radius: 0.25rem;\n  }\n  .rounded-tr {\n    border-top-right-radius: 0.25rem;\n  }\n  .rounded-b {\n    border-bottom-right-radius: 0.25rem;\n    border-bottom-left-radius: 0.25rem;\n  }\n  .rounded-br {\n    border-bottom-right-radius: 0.25rem;\n  }\n  .rounded-bl {\n    border-bottom-left-radius: 0.25rem;\n  }\n  .border {\n    border-style: var(--tw-border-style);\n    border-width: 1px;\n  }\n  .border-x {\n    border-inline-style: var(--tw-border-style);\n    border-inline-width: 1px;\n  }\n  .border-y {\n    border-block-style: var(--tw-border-style);\n    border-block-width: 1px;\n  }\n  .border-s {\n    border-inline-start-style: var(--tw-border-style);\n    border-inline-start-width: 1px;\n  }\n  .border-e {\n    border-inline-end-style: var(--tw-border-style);\n    border-inline-end-width: 1px;\n  }\n  .border-bs {\n    border-block-start-style: var(--tw-border-style);\n    border-block-start-width: 1px;\n  }\n  .border-be {\n    border-block-end-style: var(--tw-border-style);\n    border-block-end-width: 1px;\n  }\n  .border-t {\n    border-top-style: var(--tw-border-style);\n    border-top-width: 1px;\n  }\n  .border-r {\n    border-right-style: var(--tw-border-style);\n    border-right-width: 1px;\n  }\n  .border-b {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 1px;\n  }\n  .border-l {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 1px;\n  }\n  .border-gray-200 {\n    border-color: var(--color-gray-200);\n  }\n  .border-gray-300 {\n    border-color: var(--color-gray-300);\n  }\n  .border-gray-400 {\n    border-color: var(--color-gray-400);\n  }\n  .bg-blue-100 {\n    background-color: var(--color-blue-100);\n  }\n  .bg-blue-600 {\n    background-color: var(--color-blue-600);\n  }\n  .bg-gray-50 {\n    background-color: var(--color-gray-50);\n  }\n  .bg-green-100 {\n    background-color: var(--color-green-100);\n  }\n  .bg-red-100 {\n    background-color: var(--color-red-100);\n  }\n  .bg-red-500 {\n    background-color: var(--color-red-500);\n  }\n  .bg-white {\n    background-color: var(--color-white);\n  }\n  .bg-repeat {\n    background-repeat: repeat;\n  }\n  .mask-no-clip {\n    mask-clip: no-clip;\n  }\n  .mask-repeat {\n    mask-repeat: repeat;\n  }\n  .p-8 {\n    padding: calc(var(--spacing) * 8);\n  }\n  .px-1 {\n    padding-inline: calc(var(--spacing) * 1);\n  }\n  .px-2 {\n    padding-inline: calc(var(--spacing) * 2);\n  }\n  .px-2\\.5 {\n    padding-inline: calc(var(--spacing) * 2.5);\n  }\n  .px-3 {\n    padding-inline: calc(var(--spacing) * 3);\n  }\n  .px-4 {\n    padding-inline: calc(var(--spacing) * 4);\n  }\n  .px-6 {\n    padding-inline: calc(var(--spacing) * 6);\n  }\n  .py-0 {\n    padding-block: calc(var(--spacing) * 0);\n  }\n  .py-0\\.5 {\n    padding-block: calc(var(--spacing) * 0.5);\n  }\n  .py-1 {\n    padding-block: calc(var(--spacing) * 1);\n  }\n  .py-2 {\n    padding-block: calc(var(--spacing) * 2);\n  }\n  .py-3 {\n    padding-block: calc(var(--spacing) * 3);\n  }\n  .py-4 {\n    padding-block: calc(var(--spacing) * 4);\n  }\n  .py-6 {\n    padding-block: calc(var(--spacing) * 6);\n  }\n  .py-16 {\n    padding-block: calc(var(--spacing) * 16);\n  }\n  .text-center {\n    text-align: center;\n  }\n  .text-2xl {\n    font-size: var(--text-2xl);\n    line-height: var(--tw-leading, var(--text-2xl--line-height));\n  }\n  .text-base {\n    font-size: var(--text-base);\n    line-height: var(--tw-leading, var(--text-base--line-height));\n  }\n  .text-lg {\n    font-size: var(--text-lg);\n    line-height: var(--tw-leading, var(--text-lg--line-height));\n  }\n  .text-sm {\n    font-size: var(--text-sm);\n    line-height: var(--tw-leading, var(--text-sm--line-height));\n  }\n  .text-xl {\n    font-size: var(--text-xl);\n    line-height: var(--tw-leading, var(--text-xl--line-height));\n  }\n  .text-xs {\n    font-size: var(--text-xs);\n    line-height: var(--tw-leading, var(--text-xs--line-height));\n  }\n  .font-bold {\n    --tw-font-weight: var(--font-weight-bold);\n    font-weight: var(--font-weight-bold);\n  }\n  .font-medium {\n    --tw-font-weight: var(--font-weight-medium);\n    font-weight: var(--font-weight-medium);\n  }\n  .font-semibold {\n    --tw-font-weight: var(--font-weight-semibold);\n    font-weight: var(--font-weight-semibold);\n  }\n  .tracking-wider {\n    --tw-tracking: var(--tracking-wider);\n    letter-spacing: var(--tracking-wider);\n  }\n  .text-wrap {\n    text-wrap: wrap;\n  }\n  .text-clip {\n    text-overflow: clip;\n  }\n  .text-ellipsis {\n    text-overflow: ellipsis;\n  }\n  .text-blue-600 {\n    color: var(--color-blue-600);\n  }\n  .text-blue-700 {\n    color: var(--color-blue-700);\n  }\n  .text-gray-400 {\n    color: var(--color-gray-400);\n  }\n  .text-gray-500 {\n    color: var(--color-gray-500);\n  }\n  .text-gray-600 {\n    color: var(--color-gray-600);\n  }\n  .text-gray-700 {\n    color: var(--color-gray-700);\n  }\n  .text-gray-800 {\n    color: var(--color-gray-800);\n  }\n  .text-green-700 {\n    color: var(--color-green-700);\n  }\n  .text-red-700 {\n    color: var(--color-red-700);\n  }\n  .text-white {\n    color: var(--color-white);\n  }\n  .capitalize {\n    text-transform: capitalize;\n  }\n  .lowercase {\n    text-transform: lowercase;\n  }\n  .normal-case {\n    text-transform: none;\n  }\n  .uppercase {\n    text-transform: uppercase;\n  }\n  .italic {\n    font-style: italic;\n  }\n  .not-italic {\n    font-style: normal;\n  }\n  .diagonal-fractions {\n    --tw-numeric-fraction: diagonal-fractions;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .lining-nums {\n    --tw-numeric-figure: lining-nums;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .oldstyle-nums {\n    --tw-numeric-figure: oldstyle-nums;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .ordinal {\n    --tw-ordinal: ordinal;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .proportional-nums {\n    --tw-numeric-spacing: proportional-nums;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .slashed-zero {\n    --tw-slashed-zero: slashed-zero;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .stacked-fractions {\n    --tw-numeric-fraction: stacked-fractions;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .tabular-nums {\n    --tw-numeric-spacing: tabular-nums;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .normal-nums {\n    font-variant-numeric: normal;\n  }\n  .line-through {\n    text-decoration-line: line-through;\n  }\n  .no-underline {\n    text-decoration-line: none;\n  }\n  .overline {\n    text-decoration-line: overline;\n  }\n  .underline {\n    text-decoration-line: underline;\n  }\n  .antialiased {\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n  .subpixel-antialiased {\n    -webkit-font-smoothing: auto;\n    -moz-osx-font-smoothing: auto;\n  }\n  .accent-blue-600 {\n    accent-color: var(--color-blue-600);\n  }\n  .opacity-30 {\n    opacity: 30%;\n  }\n  .opacity-60 {\n    opacity: 60%;\n  }\n  .shadow {\n    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-lg {\n    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-sm {\n    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .inset-ring {\n    --tw-inset-ring-shadow: inset 0 0 0 1px var(--tw-inset-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .outline {\n    outline-style: var(--tw-outline-style);\n    outline-width: 1px;\n  }\n  .blur {\n    --tw-blur: blur(8px);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .drop-shadow {\n    --tw-drop-shadow-size: drop-shadow(0 1px 2px var(--tw-drop-shadow-color, rgb(0 0 0 / 0.1))) drop-shadow(0 1px 1px var(--tw-drop-shadow-color, rgb(0 0 0 / 0.06)));\n    --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow( 0 1px 1px rgb(0 0 0 / 0.06));\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .grayscale {\n    --tw-grayscale: grayscale(100%);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .invert {\n    --tw-invert: invert(100%);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .sepia {\n    --tw-sepia: sepia(100%);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .filter {\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .backdrop-blur {\n    --tw-backdrop-blur: blur(8px);\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .backdrop-grayscale {\n    --tw-backdrop-grayscale: grayscale(100%);\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .backdrop-invert {\n    --tw-backdrop-invert: invert(100%);\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .backdrop-sepia {\n    --tw-backdrop-sepia: sepia(100%);\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .backdrop-filter {\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .transition {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-colors {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .divide-x-reverse {\n    :where(& > :not(:last-child)) {\n      --tw-divide-x-reverse: 1;\n    }\n  }\n  .ring-inset {\n    --tw-ring-inset: inset;\n  }\n  .placeholder\\:text-gray-400 {\n    &::placeholder {\n      color: var(--color-gray-400);\n    }\n  }\n  .hover\\:border-blue-200 {\n    &:hover {\n      @media (hover: hover) {\n        border-color: var(--color-blue-200);\n      }\n    }\n  }\n  .hover\\:bg-blue-50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-50);\n      }\n    }\n  }\n  .hover\\:bg-blue-700 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-700);\n      }\n    }\n  }\n  .hover\\:bg-gray-50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-gray-50);\n      }\n    }\n  }\n  .hover\\:bg-gray-100 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-gray-100);\n      }\n    }\n  }\n  .hover\\:bg-red-600 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-red-600);\n      }\n    }\n  }\n  .hover\\:text-red-500 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-red-500);\n      }\n    }\n  }\n  .focus-visible\\:ring-2 {\n    &:focus-visible {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-visible\\:ring-blue-400 {\n    &:focus-visible {\n      --tw-ring-color: var(--color-blue-400);\n    }\n  }\n  .focus-visible\\:ring-offset-2 {\n    &:focus-visible {\n      --tw-ring-offset-width: 2px;\n      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);\n    }\n  }\n  .focus-visible\\:outline-none {\n    &:focus-visible {\n      --tw-outline-style: none;\n      outline-style: none;\n    }\n  }\n  .disabled\\:pointer-events-none {\n    &:disabled {\n      pointer-events: none;\n    }\n  }\n  .disabled\\:cursor-not-allowed {\n    &:disabled {\n      cursor: not-allowed;\n    }\n  }\n  .disabled\\:opacity-50 {\n    &:disabled {\n      opacity: 50%;\n    }\n  }\n  .print\\:block {\n    @media print {\n      display: block;\n    }\n  }\n  .print\\:hidden {\n    @media print {\n      display: none;\n    }\n  }\n}\n@property --tw-scale-x {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-scale-y {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-scale-z {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-rotate-x {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-rotate-y {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-rotate-z {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-skew-x {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-skew-y {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-pan-x {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-pan-y {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-pinch-zoom {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-space-y-reverse {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-space-x-reverse {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-divide-x-reverse {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-border-style {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: solid;\n}\n@property --tw-divide-y-reverse {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-font-weight {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-tracking {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-ordinal {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-slashed-zero {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-numeric-figure {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-numeric-spacing {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-numeric-fraction {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-shadow {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-shadow-color {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-shadow-alpha {\n  syntax: \"<percentage>\";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-inset-shadow {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-inset-shadow-color {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-inset-shadow-alpha {\n  syntax: \"<percentage>\";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-ring-color {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-ring-shadow {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-inset-ring-color {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-inset-ring-shadow {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-ring-inset {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-ring-offset-width {\n  syntax: \"<length>\";\n  inherits: false;\n  initial-value: 0px;\n}\n@property --tw-ring-offset-color {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: #fff;\n}\n@property --tw-ring-offset-shadow {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-outline-style {\n  syntax: \"*\";\n  inherits: false;\n  initial-value: solid;\n}\n@property --tw-blur {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-brightness {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-contrast {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-grayscale {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-hue-rotate {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-invert {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-opacity {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-saturate {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-sepia {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-drop-shadow {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-drop-shadow-color {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-drop-shadow-alpha {\n  syntax: \"<percentage>\";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-drop-shadow-size {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-blur {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-brightness {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-contrast {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-grayscale {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-hue-rotate {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-invert {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-opacity {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-saturate {\n  syntax: \"*\";\n  inherits: false;\n}\n@property --tw-backdrop-sepia {\n  syntax: \"*\";\n  inherits: false;\n}\n@layer properties {\n  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {\n    *, ::before, ::after, ::backdrop {\n      --tw-scale-x: 1;\n      --tw-scale-y: 1;\n      --tw-scale-z: 1;\n      --tw-rotate-x: initial;\n      --tw-rotate-y: initial;\n      --tw-rotate-z: initial;\n      --tw-skew-x: initial;\n      --tw-skew-y: initial;\n      --tw-pan-x: initial;\n      --tw-pan-y: initial;\n      --tw-pinch-zoom: initial;\n      --tw-space-y-reverse: 0;\n      --tw-space-x-reverse: 0;\n      --tw-divide-x-reverse: 0;\n      --tw-border-style: solid;\n      --tw-divide-y-reverse: 0;\n      --tw-font-weight: initial;\n      --tw-tracking: initial;\n      --tw-ordinal: initial;\n      --tw-slashed-zero: initial;\n      --tw-numeric-figure: initial;\n      --tw-numeric-spacing: initial;\n      --tw-numeric-fraction: initial;\n      --tw-shadow: 0 0 #0000;\n      --tw-shadow-color: initial;\n      --tw-shadow-alpha: 100%;\n      --tw-inset-shadow: 0 0 #0000;\n      --tw-inset-shadow-color: initial;\n      --tw-inset-shadow-alpha: 100%;\n      --tw-ring-color: initial;\n      --tw-ring-shadow: 0 0 #0000;\n      --tw-inset-ring-color: initial;\n      --tw-inset-ring-shadow: 0 0 #0000;\n      --tw-ring-inset: initial;\n      --tw-ring-offset-width: 0px;\n      --tw-ring-offset-color: #fff;\n      --tw-ring-offset-shadow: 0 0 #0000;\n      --tw-outline-style: solid;\n      --tw-blur: initial;\n      --tw-brightness: initial;\n      --tw-contrast: initial;\n      --tw-grayscale: initial;\n      --tw-hue-rotate: initial;\n      --tw-invert: initial;\n      --tw-opacity: initial;\n      --tw-saturate: initial;\n      --tw-sepia: initial;\n      --tw-drop-shadow: initial;\n      --tw-drop-shadow-color: initial;\n      --tw-drop-shadow-alpha: 100%;\n      --tw-drop-shadow-size: initial;\n      --tw-backdrop-blur: initial;\n      --tw-backdrop-brightness: initial;\n      --tw-backdrop-contrast: initial;\n      --tw-backdrop-grayscale: initial;\n      --tw-backdrop-hue-rotate: initial;\n      --tw-backdrop-invert: initial;\n      --tw-backdrop-opacity: initial;\n      --tw-backdrop-saturate: initial;\n      --tw-backdrop-sepia: initial;\n    }\n  }\n}\n"
-__vite__updateStyle(__vite__id, __vite__css)
-import.meta.hot.accept()
-import.meta.hot.prune(() => __vite__removeStyle(__vite__id))
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/renderer/pages/ListeCourses.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=71059fa0"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=71059fa0"; const useEffect = __vite__cjsImport3_react["useEffect"]; const useState = __vite__cjsImport3_react["useState"];
+import { useNavigate } from "/node_modules/.vite/deps/react-router-dom.js?v=71059fa0";
+import { ShoppingCart, Printer, Trash2, Save, History, Plus } from "/node_modules/.vite/deps/lucide-react.js?v=71059fa0";
+import { toast } from "/node_modules/.vite/deps/sonner.js?v=71059fa0";
+import SearchBar from "/src/renderer/components/SearchBar.tsx";
+import ItemListeComponent from "/src/renderer/components/ItemListe.tsx";
+import HistoriqueListes from "/src/renderer/components/HistoriqueListes.tsx";
+import ModaleNouveauProduit from "/src/renderer/components/ModaleNouveauProduit.tsx";
+import { Button } from "/src/renderer/components/ui/button.tsx";
+import { Badge } from "/src/renderer/components/ui/badge.tsx";
+import { useDialog } from "/src/renderer/components/ui/dialog.tsx";
+export default function ListeCourses() {
+  _s();
+  const navigate = useNavigate();
+  const { confirm } = useDialog();
+  const [showNouveauProduit, setShowNouveauProduit] = useState(false);
+  const [queryPourNouveauProduit, setQueryPourNouveauProduit] = useState("");
+  const [produits, setProduits] = useState([]);
+  const [liste, setListe] = useState([]);
+  const [showHistorique, setShowHistorique] = useState(false);
+  const [showSauvegardeModal, setShowSauvegardeModal] = useState(false);
+  const [nomSauvegarde, setNomSauvegarde] = useState("");
+  useEffect(() => {
+    chargerDonnees();
+  }, []);
+  async function chargerDonnees() {
+    const [p, l] = await Promise.all(
+      [
+        window.api.getProduits(),
+        window.api.getListeCourses()
+      ]
+    );
+    setProduits(p);
+    setListe(l);
+  }
+  async function handleAjouter(produit, quantite) {
+    await window.api.ajouterAListe(produit.id, quantite);
+    const l = await window.api.getListeCourses();
+    setListe(l);
+    toast.success(`${produit.nom} ajouté à la liste`);
+  }
+  async function handleCreerProduit(nom, prix, rayon_id) {
+    const id = await window.api.createProduit(nom, prix, rayon_id);
+    await window.api.ajouterAListe(id, 1);
+    await chargerDonnees();
+    toast.success(`"${nom}" créé et ajouté à la liste`);
+  }
+  async function handleQuantite(id, quantite) {
+    await window.api.updateQuantite(id, quantite);
+    setListe((prev) => prev.map((i) => i.id === id ? { ...i, quantite } : i));
+  }
+  async function handlePrix(id, prix) {
+    await window.api.updatePrixListe(id, prix);
+    setListe((prev) => prev.map((i) => i.id === id ? { ...i, prix } : i));
+    toast.success("Prix mis à jour pour cette liste");
+  }
+  function handleImprimer() {
+    navigate("/apercu");
+  }
+  async function handleChargerListe(id) {
+    const ok = await confirm({ title: "Charger cette liste", message: "La liste actuelle sera remplacée. Continuer ?", confirmLabel: "Charger", variant: "default" });
+    if (!ok) return;
+    await window.api.chargerListeSauvegardee(id);
+    await chargerDonnees();
+    setShowHistorique(false);
+    toast.success("Liste chargée");
+  }
+  async function handleSupprimer(id) {
+    const item = liste.find((i) => i.id === id);
+    await window.api.supprimerDeListe(id);
+    setListe((prev) => prev.filter((i) => i.id !== id));
+    if (item) {
+      toast(`"${item.produit_nom}" retiré de la liste`, {
+        action: {
+          label: "Restaurer",
+          onClick: async () => {
+            await window.api.ajouterAListe(item.produit_id, item.quantite);
+            const l = await window.api.getListeCourses();
+            setListe(l);
+          }
+        }
+      });
+    }
+  }
+  async function handleVider() {
+    const ok = await confirm({ title: "Vider la liste", message: "Supprimer tous les produits de la liste ?", confirmLabel: "Vider", variant: "destructive" });
+    if (!ok) return;
+    const snapshot = [...liste];
+    await window.api.viderListe();
+    setListe([]);
+    toast("Liste vidée", {
+      action: {
+        label: "Restaurer",
+        onClick: async () => {
+          for (const item of snapshot) {
+            await window.api.ajouterAListe(item.produit_id, item.quantite);
+          }
+          await chargerDonnees();
+        }
+      }
+    });
+  }
+  function handleOuvrirSauvegarde() {
+    const now = /* @__PURE__ */ new Date();
+    const defaultNom = `Courses du ${now.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" })}`;
+    setNomSauvegarde(defaultNom);
+    setShowSauvegardeModal(true);
+  }
+  async function handleSauvegarder() {
+    if (!nomSauvegarde.trim()) return;
+    await window.api.sauvegarderListe(nomSauvegarde.trim());
+    setShowSauvegardeModal(false);
+    toast.success(`Liste "${nomSauvegarde.trim()}" sauvegardée`);
+  }
+  const total = liste.reduce((sum, i) => sum + i.prix * i.quantite, 0);
+  const nbCoches = liste.length;
+  function parseRayon(nom) {
+    if (!nom) return [Infinity, ""];
+    const match = nom.trim().match(/^0*(\d+)([a-zA-Z]*)$/);
+    if (!match) return [Infinity, nom.toLowerCase()];
+    return [parseInt(match[1], 10), match[2].toLowerCase()];
+  }
+  const listeTrie = [...liste].sort((a, b) => {
+    const [numA, letA] = parseRayon(a.rayon_nom);
+    const [numB, letB] = parseRayon(b.rayon_nom);
+    if (numA !== numB) return numA - numB;
+    if (letA !== letB) return letA.localeCompare(letB, "fr");
+    return a.produit_nom.localeCompare(b.produit_nom, "fr");
+  });
+  return /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-50", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "bg-white border-b border-gray-200 px-6 py-3 print:hidden", children: /* @__PURE__ */ jsxDEV("div", { className: "max-w-4xl mx-auto flex items-center justify-end gap-2", children: [
+      liste.length > 0 && /* @__PURE__ */ jsxDEV(Badge, { variant: "default", children: [
+        nbCoches,
+        "/",
+        liste.length
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 171,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: () => setShowHistorique(true), children: [
+        /* @__PURE__ */ jsxDEV(History, { size: 15, className: "mr-1" }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 174,
+          columnNumber: 13
+        }, this),
+        " Historique"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 173,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: handleImprimer, disabled: liste.length === 0, children: [
+        /* @__PURE__ */ jsxDEV(Printer, { size: 15, className: "mr-1" }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 177,
+          columnNumber: 13
+        }, this),
+        " Imprimer"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 176,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: handleOuvrirSauvegarde, disabled: liste.length === 0, children: [
+        /* @__PURE__ */ jsxDEV(Save, { size: 15, className: "mr-1" }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 180,
+          columnNumber: 13
+        }, this),
+        " Sauvegarder"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 179,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(Button, { variant: "destructive", size: "sm", onClick: handleVider, disabled: liste.length === 0, children: [
+        /* @__PURE__ */ jsxDEV(Trash2, { size: 15, className: "mr-1" }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 183,
+          columnNumber: 13
+        }, this),
+        " Vider"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 182,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+      lineNumber: 169,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+      lineNumber: 168,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("main", { className: "max-w-4xl mx-auto px-6 py-6", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "mb-6 print:hidden flex gap-2", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex-1", children: /* @__PURE__ */ jsxDEV(SearchBar, { produits, onAjouter: handleAjouter, onNouveauProduit: (query) => {
+          setQueryPourNouveauProduit(query);
+          setShowNouveauProduit(true);
+        } }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 192,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 191,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "icon", onClick: () => {
+          setQueryPourNouveauProduit("");
+          setShowNouveauProduit(true);
+        }, title: "Créer un nouveau produit", children: /* @__PURE__ */ jsxDEV(Plus, { size: 16 }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 195,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 194,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 190,
+        columnNumber: 9
+      }, this),
+      liste.length === 0 && /* @__PURE__ */ jsxDEV("div", { className: "text-center py-16 text-gray-400", children: [
+        /* @__PURE__ */ jsxDEV(ShoppingCart, { size: 40, className: "mx-auto mb-3 opacity-30" }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 202,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { children: "La liste est vide. Recherchez un produit ci-dessus." }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 203,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 201,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "border border-gray-200 rounded-lg overflow-hidden divide-y divide-gray-100", children: liste.map(
+        (item) => /* @__PURE__ */ jsxDEV(
+          ItemListeComponent,
+          {
+            item,
+            onQuantite: handleQuantite,
+            onSupprimer: handleSupprimer,
+            onPrix: handlePrix
+          },
+          item.id,
+          false,
+          {
+            fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+            lineNumber: 210,
+            columnNumber: 11
+          },
+          this
+        )
+      ) }, void 0, false, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 208,
+        columnNumber: 9
+      }, this),
+      liste.length > 0 && /* @__PURE__ */ jsxDEV("div", { className: "mt-6 flex justify-end print:hidden", children: /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium text-gray-700", children: [
+        "Total estimé : ",
+        /* @__PURE__ */ jsxDEV("span", { className: "text-blue-600 font-semibold", children: [
+          total.toFixed(2),
+          " €"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 224,
+          columnNumber: 30
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 223,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 222,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+      lineNumber: 188,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "hidden print:block p-6", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center mb-4", children: [
+        /* @__PURE__ */ jsxDEV("h1", { className: "text-lg font-bold", children: "Liste de Courses" }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 233,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "text-sm text-gray-500", children: [
+          (/* @__PURE__ */ new Date()).toLocaleDateString("fr-BE"),
+          " — ",
+          liste.length,
+          " articles"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 234,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 232,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("hr", { className: "mb-4 border-gray-300" }, void 0, false, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 236,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { style: { columnCount: 2, columnGap: "3rem" }, children: listeTrie.map(
+        (item) => /* @__PURE__ */ jsxDEV("div", { style: { breakInside: "avoid" }, className: "flex items-center gap-2 py-0.5 text-sm", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "inline-block w-3.5 h-3.5 border border-gray-500 shrink-0 mt-0.5" }, void 0, false, {
+            fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+            lineNumber: 240,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "flex-1", children: [
+            item.quantite > 1 && /* @__PURE__ */ jsxDEV("span", { className: "font-medium", children: [
+              item.quantite,
+              "× "
+            ] }, void 0, true, {
+              fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+              lineNumber: 242,
+              columnNumber: 39
+            }, this),
+            item.produit_nom
+          ] }, void 0, true, {
+            fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+            lineNumber: 241,
+            columnNumber: 15
+          }, this),
+          item.prix > 0 && /* @__PURE__ */ jsxDEV("span", { className: "text-gray-400 text-xs shrink-0", children: [
+            (item.prix * item.quantite).toFixed(2),
+            "€"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+            lineNumber: 246,
+            columnNumber: 13
+          }, this)
+        ] }, item.id, true, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 239,
+          columnNumber: 11
+        }, this)
+      ) }, void 0, false, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 237,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("hr", { className: "mt-4 border-gray-300" }, void 0, false, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 251,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex justify-end mt-2 text-sm font-semibold", children: [
+        "Total estimé : ",
+        total.toFixed(2),
+        " €"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 252,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+      lineNumber: 231,
+      columnNumber: 7
+    }, this),
+    showSauvegardeModal && /* @__PURE__ */ jsxDEV("div", { className: "fixed inset-0 z-50 flex items-center justify-center bg-black/40", children: /* @__PURE__ */ jsxDEV("div", { className: "bg-white rounded-xl shadow-2xl w-full max-w-sm p-6", children: [
+      /* @__PURE__ */ jsxDEV("h2", { className: "text-base font-semibold text-gray-800 mb-4", children: "Sauvegarder la liste" }, void 0, false, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 261,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "input",
+        {
+          type: "text",
+          value: nomSauvegarde,
+          onChange: (e) => setNomSauvegarde(e.target.value),
+          onKeyDown: (e) => e.key === "Enter" && handleSauvegarder(),
+          placeholder: "Nom de la liste...",
+          className: "w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4",
+          autoFocus: true
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 262,
+          columnNumber: 13
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex gap-2 justify-end", children: [
+        /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: () => setShowSauvegardeModal(false), children: "Annuler" }, void 0, false, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 272,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV(Button, { size: "sm", onClick: handleSauvegarder, disabled: !nomSauvegarde.trim(), children: [
+          /* @__PURE__ */ jsxDEV(Save, { size: 14, className: "mr-1" }, void 0, false, {
+            fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+            lineNumber: 274,
+            columnNumber: 17
+          }, this),
+          " Sauvegarder"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+          lineNumber: 273,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 271,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+      lineNumber: 260,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+      lineNumber: 259,
+      columnNumber: 7
+    }, this),
+    showHistorique && /* @__PURE__ */ jsxDEV(HistoriqueListes, { onClose: () => setShowHistorique(false), onCharger: handleChargerListe }, void 0, false, {
+      fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+      lineNumber: 283,
+      columnNumber: 7
+    }, this),
+    showNouveauProduit && /* @__PURE__ */ jsxDEV(
+      ModaleNouveauProduit,
+      {
+        nomInitial: queryPourNouveauProduit,
+        onCreer: handleCreerProduit,
+        onClose: () => setShowNouveauProduit(false)
+      },
+      void 0,
+      false,
+      {
+        fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+        lineNumber: 287,
+        columnNumber: 7
+      },
+      this
+    )
+  ] }, void 0, true, {
+    fileName: "C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx",
+    lineNumber: 166,
+    columnNumber: 5
+  }, this);
+}
+_s(ListeCourses, "34jCok+pvFcZiIU6C62oVFczuxU=", false, function() {
+  return [useNavigate, useDialog];
+});
+_c = ListeCourses;
+var _c;
+$RefreshReg$(_c, "ListeCourses");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Capafix/Desktop/Developpement/liste-course/src/renderer/pages/ListeCourses.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUMsUUFBSyxNQUFNLElBQUksV0FBVSxVQUExQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUFnQztBQUFBLFVBQUc7QUFBQSxhQURyQztBQUFBO0FBQUE7QUFBQTtBQUFBLGVBRUE7QUFBQSxXQUpGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFLQTtBQUFBLFNBaEJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FpQkEsS0FsQkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQW1CQTtBQUFBLElBSUQvRCxrQkFDQyx1QkFBQyxvQkFBaUIsU0FBUyxNQUFNQyxrQkFBa0IsS0FBSyxHQUFHLFdBQVdpQyxzQkFBdEU7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUF5RjtBQUFBLElBRzFGMUMsc0JBQ0M7QUFBQSxNQUFDO0FBQUE7QUFBQSxRQUNDLFlBQVlFO0FBQUFBLFFBQ1osU0FBUzRCO0FBQUFBLFFBQ1QsU0FBUyxNQUFNN0Isc0JBQXNCLEtBQUs7QUFBQTtBQUFBLE1BSDVDO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxJQUc4QztBQUFBLE9BNUhsRDtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBK0hBO0FBRUo7QUFBQ0osR0F0UXVCRCxjQUFZO0FBQUEsVUFDakJmLGFBQ0djLFNBQVM7QUFBQTtBQUFBLEtBRlBDO0FBQVksSUFBQTBHO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbInVzZUVmZmVjdCIsInVzZVN0YXRlIiwidXNlTmF2aWdhdGUiLCJTaG9wcGluZ0NhcnQiLCJQcmludGVyIiwiVHJhc2gyIiwiU2F2ZSIsIkhpc3RvcnkiLCJQbHVzIiwidG9hc3QiLCJTZWFyY2hCYXIiLCJJdGVtTGlzdGVDb21wb25lbnQiLCJIaXN0b3JpcXVlTGlzdGVzIiwiTW9kYWxlTm91dmVhdVByb2R1aXQiLCJCdXR0b24iLCJCYWRnZSIsInVzZURpYWxvZyIsIkxpc3RlQ291cnNlcyIsIl9zIiwibmF2aWdhdGUiLCJjb25maXJtIiwic2hvd05vdXZlYXVQcm9kdWl0Iiwic2V0U2hvd05vdXZlYXVQcm9kdWl0IiwicXVlcnlQb3VyTm91dmVhdVByb2R1aXQiLCJzZXRRdWVyeVBvdXJOb3V2ZWF1UHJvZHVpdCIsInByb2R1aXRzIiwic2V0UHJvZHVpdHMiLCJsaXN0ZSIsInNldExpc3RlIiwic2hvd0hpc3RvcmlxdWUiLCJzZXRTaG93SGlzdG9yaXF1ZSIsInNob3dTYXV2ZWdhcmRlTW9kYWwiLCJzZXRTaG93U2F1dmVnYXJkZU1vZGFsIiwibm9tU2F1dmVnYXJkZSIsInNldE5vbVNhdXZlZ2FyZGUiLCJjaGFyZ2VyRG9ubmVlcyIsInAiLCJsIiwiUHJvbWlzZSIsImFsbCIsIndpbmRvdyIsImFwaSIsImdldFByb2R1aXRzIiwiZ2V0TGlzdGVDb3Vyc2VzIiwiaGFuZGxlQWpvdXRlciIsInByb2R1aXQiLCJxdWFudGl0ZSIsImFqb3V0ZXJBTGlzdGUiLCJpZCIsInN1Y2Nlc3MiLCJub20iLCJoYW5kbGVDcmVlclByb2R1aXQiLCJwcml4IiwicmF5b25faWQiLCJjcmVhdGVQcm9kdWl0IiwiaGFuZGxlUXVhbnRpdGUiLCJ1cGRhdGVRdWFudGl0ZSIsInByZXYiLCJtYXAiLCJpIiwiaGFuZGxlUHJpeCIsInVwZGF0ZVByaXhMaXN0ZSIsImhhbmRsZUltcHJpbWVyIiwiaGFuZGxlQ2hhcmdlckxpc3RlIiwib2siLCJ0aXRsZSIsIm1lc3NhZ2UiLCJjb25maXJtTGFiZWwiLCJ2YXJpYW50IiwiY2hhcmdlckxpc3RlU2F1dmVnYXJkZWUiLCJoYW5kbGVTdXBwcmltZXIiLCJpdGVtIiwiZmluZCIsInN1cHByaW1lckRlTGlzdGUiLCJmaWx0ZXIiLCJwcm9kdWl0X25vbSIsImFjdGlvbiIsImxhYmVsIiwib25DbGljayIsInByb2R1aXRfaWQiLCJoYW5kbGVWaWRlciIsInNuYXBzaG90IiwidmlkZXJMaXN0ZSIsImhhbmRsZU91dnJpclNhdXZlZ2FyZGUiLCJub3ciLCJEYXRlIiwiZGVmYXVsdE5vbSIsInRvTG9jYWxlRGF0ZVN0cmluZyIsImRheSIsIm1vbnRoIiwieWVhciIsImhhbmRsZVNhdXZlZ2FyZGVyIiwidHJpbSIsInNhdXZlZ2FyZGVyTGlzdGUiLCJ0b3RhbCIsInJlZHVjZSIsInN1bSIsIm5iQ29jaGVzIiwibGVuZ3RoIiwicGFyc2VSYXlvbiIsIkluZmluaXR5IiwibWF0Y2giLCJ0b0xvd2VyQ2FzZSIsInBhcnNlSW50IiwibGlzdGVUcmllIiwic29ydCIsImEiLCJiIiwibnVtQSIsImxldEEiLCJyYXlvbl9ub20iLCJudW1CIiwibGV0QiIsImxvY2FsZUNvbXBhcmUiLCJxdWVyeSIsInRvRml4ZWQiLCJjb2x1bW5Db3VudCIsImNvbHVtbkdhcCIsImJyZWFrSW5zaWRlIiwiZSIsInRhcmdldCIsInZhbHVlIiwia2V5IiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiTGlzdGVDb3Vyc2VzLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlRWZmZWN0LCB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgdXNlTmF2aWdhdGUgfSBmcm9tICdyZWFjdC1yb3V0ZXItZG9tJztcclxuaW1wb3J0IHsgU2hvcHBpbmdDYXJ0LCBQcmludGVyLCBUcmFzaDIsIFNhdmUsIEhpc3RvcnksIFBsdXMgfSBmcm9tICdsdWNpZGUtcmVhY3QnO1xyXG5pbXBvcnQgeyB0b2FzdCB9IGZyb20gJ3Nvbm5lcic7XHJcbmltcG9ydCB7IFByb2R1aXQsIEl0ZW1MaXN0ZSB9IGZyb20gJy4uL3R5cGVzJztcclxuaW1wb3J0IFNlYXJjaEJhciBmcm9tICcuLi9jb21wb25lbnRzL1NlYXJjaEJhcic7XHJcbmltcG9ydCBJdGVtTGlzdGVDb21wb25lbnQgZnJvbSAnLi4vY29tcG9uZW50cy9JdGVtTGlzdGUnO1xyXG5pbXBvcnQgSGlzdG9yaXF1ZUxpc3RlcyBmcm9tICcuLi9jb21wb25lbnRzL0hpc3RvcmlxdWVMaXN0ZXMnO1xyXG5pbXBvcnQgTW9kYWxlTm91dmVhdVByb2R1aXQgZnJvbSAnLi4vY29tcG9uZW50cy9Nb2RhbGVOb3V2ZWF1UHJvZHVpdCc7XHJcbmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJy4uL2NvbXBvbmVudHMvdWkvYnV0dG9uJztcclxuaW1wb3J0IHsgQmFkZ2UgfSBmcm9tICcuLi9jb21wb25lbnRzL3VpL2JhZGdlJztcclxuaW1wb3J0IHsgdXNlRGlhbG9nIH0gZnJvbSAnLi4vY29tcG9uZW50cy91aS9kaWFsb2cnO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gTGlzdGVDb3Vyc2VzKCkge1xyXG4gIGNvbnN0IG5hdmlnYXRlID0gdXNlTmF2aWdhdGUoKTtcclxuICBjb25zdCB7IGNvbmZpcm0gfSA9IHVzZURpYWxvZygpO1xyXG4gIGNvbnN0IFtzaG93Tm91dmVhdVByb2R1aXQsIHNldFNob3dOb3V2ZWF1UHJvZHVpdF0gPSB1c2VTdGF0ZShmYWxzZSk7XHJcbiAgY29uc3QgW3F1ZXJ5UG91ck5vdXZlYXVQcm9kdWl0LCBzZXRRdWVyeVBvdXJOb3V2ZWF1UHJvZHVpdF0gPSB1c2VTdGF0ZSgnJyk7XHJcbiAgY29uc3QgW3Byb2R1aXRzLCBzZXRQcm9kdWl0c10gPSB1c2VTdGF0ZTxQcm9kdWl0W10+KFtdKTtcclxuICBjb25zdCBbbGlzdGUsIHNldExpc3RlXSA9IHVzZVN0YXRlPEl0ZW1MaXN0ZVtdPihbXSk7XHJcbiAgY29uc3QgW3Nob3dIaXN0b3JpcXVlLCBzZXRTaG93SGlzdG9yaXF1ZV0gPSB1c2VTdGF0ZShmYWxzZSk7XHJcbiAgY29uc3QgW3Nob3dTYXV2ZWdhcmRlTW9kYWwsIHNldFNob3dTYXV2ZWdhcmRlTW9kYWxdID0gdXNlU3RhdGUoZmFsc2UpO1xyXG4gIGNvbnN0IFtub21TYXV2ZWdhcmRlLCBzZXROb21TYXV2ZWdhcmRlXSA9IHVzZVN0YXRlKCcnKTtcclxuXHJcbiAgdXNlRWZmZWN0KCgpID0+IHtcclxuICAgIGNoYXJnZXJEb25uZWVzKCk7XHJcbiAgfSwgW10pO1xyXG5cclxuICBhc3luYyBmdW5jdGlvbiBjaGFyZ2VyRG9ubmVlcygpIHtcclxuICAgIGNvbnN0IFtwLCBsXSA9IGF3YWl0IFByb21pc2UuYWxsKFtcclxuICAgICAgd2luZG93LmFwaS5nZXRQcm9kdWl0cygpLFxyXG4gICAgICB3aW5kb3cuYXBpLmdldExpc3RlQ291cnNlcygpLFxyXG4gICAgXSk7XHJcbiAgICBzZXRQcm9kdWl0cyhwIGFzIFByb2R1aXRbXSk7XHJcbiAgICBzZXRMaXN0ZShsIGFzIEl0ZW1MaXN0ZVtdKTtcclxuICB9XHJcblxyXG4gIGFzeW5jIGZ1bmN0aW9uIGhhbmRsZUFqb3V0ZXIocHJvZHVpdDogUHJvZHVpdCwgcXVhbnRpdGU6IG51bWJlcikge1xyXG4gICAgYXdhaXQgd2luZG93LmFwaS5ham91dGVyQUxpc3RlKHByb2R1aXQuaWQsIHF1YW50aXRlKTtcclxuICAgIGNvbnN0IGwgPSBhd2FpdCB3aW5kb3cuYXBpLmdldExpc3RlQ291cnNlcygpO1xyXG4gICAgc2V0TGlzdGUobCBhcyBJdGVtTGlzdGVbXSk7XHJcbiAgICB0b2FzdC5zdWNjZXNzKGAke3Byb2R1aXQubm9tfSBham91dMOpIMOgIGxhIGxpc3RlYCk7XHJcbiAgfVxyXG5cclxuICBhc3luYyBmdW5jdGlvbiBoYW5kbGVDcmVlclByb2R1aXQobm9tOiBzdHJpbmcsIHByaXg6IG51bWJlciwgcmF5b25faWQ6IG51bWJlciB8IG51bGwpIHtcclxuICAgIGNvbnN0IGlkID0gYXdhaXQgd2luZG93LmFwaS5jcmVhdGVQcm9kdWl0KG5vbSwgcHJpeCwgcmF5b25faWQpO1xyXG4gICAgYXdhaXQgd2luZG93LmFwaS5ham91dGVyQUxpc3RlKGlkIGFzIG51bWJlciwgMSk7XHJcbiAgICBhd2FpdCBjaGFyZ2VyRG9ubmVlcygpO1xyXG4gICAgdG9hc3Quc3VjY2VzcyhgXCIke25vbX1cIiBjcsOpw6kgZXQgYWpvdXTDqSDDoCBsYSBsaXN0ZWApO1xyXG4gIH1cclxuXHJcbiAgYXN5bmMgZnVuY3Rpb24gaGFuZGxlUXVhbnRpdGUoaWQ6IG51bWJlciwgcXVhbnRpdGU6IG51bWJlcikge1xyXG4gICAgYXdhaXQgd2luZG93LmFwaS51cGRhdGVRdWFudGl0ZShpZCwgcXVhbnRpdGUpO1xyXG4gICAgc2V0TGlzdGUocHJldiA9PiBwcmV2Lm1hcChpID0+IGkuaWQgPT09IGlkID8geyAuLi5pLCBxdWFudGl0ZSB9IDogaSkpO1xyXG4gIH1cclxuXHJcbiAgYXN5bmMgZnVuY3Rpb24gaGFuZGxlUHJpeChpZDogbnVtYmVyLCBwcml4OiBudW1iZXIpIHtcclxuICAgIGF3YWl0IHdpbmRvdy5hcGkudXBkYXRlUHJpeExpc3RlKGlkLCBwcml4KTtcclxuICAgIHNldExpc3RlKHByZXYgPT4gcHJldi5tYXAoaSA9PiBpLmlkID09PSBpZCA/IHsgLi4uaSwgcHJpeCB9IDogaSkpO1xyXG4gICAgdG9hc3Quc3VjY2VzcygnUHJpeCBtaXMgw6Agam91ciBwb3VyIGNldHRlIGxpc3RlJyk7XHJcbiAgfVxyXG5cclxuICBmdW5jdGlvbiBoYW5kbGVJbXByaW1lcigpIHtcclxuICAgIG5hdmlnYXRlKCcvYXBlcmN1Jyk7XHJcbiAgfVxyXG5cclxuICBhc3luYyBmdW5jdGlvbiBoYW5kbGVDaGFyZ2VyTGlzdGUoaWQ6IG51bWJlcikge1xyXG4gICAgY29uc3Qgb2sgPSBhd2FpdCBjb25maXJtKHsgdGl0bGU6ICdDaGFyZ2VyIGNldHRlIGxpc3RlJywgbWVzc2FnZTogJ0xhIGxpc3RlIGFjdHVlbGxlIHNlcmEgcmVtcGxhY8OpZS4gQ29udGludWVyID8nLCBjb25maXJtTGFiZWw6ICdDaGFyZ2VyJywgdmFyaWFudDogJ2RlZmF1bHQnIH0pO1xyXG4gICAgaWYgKCFvaykgcmV0dXJuO1xyXG4gICAgYXdhaXQgd2luZG93LmFwaS5jaGFyZ2VyTGlzdGVTYXV2ZWdhcmRlZShpZCk7XHJcbiAgICBhd2FpdCBjaGFyZ2VyRG9ubmVlcygpO1xyXG4gICAgc2V0U2hvd0hpc3RvcmlxdWUoZmFsc2UpO1xyXG4gICAgdG9hc3Quc3VjY2VzcygnTGlzdGUgY2hhcmfDqWUnKTtcclxuICB9XHJcblxyXG4gIGFzeW5jIGZ1bmN0aW9uIGhhbmRsZVN1cHByaW1lcihpZDogbnVtYmVyKSB7XHJcbiAgICBjb25zdCBpdGVtID0gbGlzdGUuZmluZChpID0+IGkuaWQgPT09IGlkKTtcclxuICAgIGF3YWl0IHdpbmRvdy5hcGkuc3VwcHJpbWVyRGVMaXN0ZShpZCk7XHJcbiAgICBzZXRMaXN0ZShwcmV2ID0+IHByZXYuZmlsdGVyKGkgPT4gaS5pZCAhPT0gaWQpKTtcclxuICAgIGlmIChpdGVtKSB7XHJcbiAgICAgIHRvYXN0KGBcIiR7aXRlbS5wcm9kdWl0X25vbX1cIiByZXRpcsOpIGRlIGxhIGxpc3RlYCwge1xyXG4gICAgICAgIGFjdGlvbjoge1xyXG4gICAgICAgICAgbGFiZWw6ICdSZXN0YXVyZXInLFxyXG4gICAgICAgICAgb25DbGljazogYXN5bmMgKCkgPT4ge1xyXG4gICAgICAgICAgICBhd2FpdCB3aW5kb3cuYXBpLmFqb3V0ZXJBTGlzdGUoaXRlbS5wcm9kdWl0X2lkLCBpdGVtLnF1YW50aXRlKTtcclxuICAgICAgICAgICAgY29uc3QgbCA9IGF3YWl0IHdpbmRvdy5hcGkuZ2V0TGlzdGVDb3Vyc2VzKCk7XHJcbiAgICAgICAgICAgIHNldExpc3RlKGwgYXMgSXRlbUxpc3RlW10pO1xyXG4gICAgICAgICAgfSxcclxuICAgICAgICB9LFxyXG4gICAgICB9KTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIGFzeW5jIGZ1bmN0aW9uIGhhbmRsZVZpZGVyKCkge1xyXG4gICAgY29uc3Qgb2sgPSBhd2FpdCBjb25maXJtKHsgdGl0bGU6ICdWaWRlciBsYSBsaXN0ZScsIG1lc3NhZ2U6ICdTdXBwcmltZXIgdG91cyBsZXMgcHJvZHVpdHMgZGUgbGEgbGlzdGUgPycsIGNvbmZpcm1MYWJlbDogJ1ZpZGVyJywgdmFyaWFudDogJ2Rlc3RydWN0aXZlJyB9KTtcclxuICAgIGlmICghb2spIHJldHVybjtcclxuICAgIGNvbnN0IHNuYXBzaG90ID0gWy4uLmxpc3RlXTtcclxuICAgIGF3YWl0IHdpbmRvdy5hcGkudmlkZXJMaXN0ZSgpO1xyXG4gICAgc2V0TGlzdGUoW10pO1xyXG4gICAgdG9hc3QoJ0xpc3RlIHZpZMOpZScsIHtcclxuICAgICAgYWN0aW9uOiB7XHJcbiAgICAgICAgbGFiZWw6ICdSZXN0YXVyZXInLFxyXG4gICAgICAgIG9uQ2xpY2s6IGFzeW5jICgpID0+IHtcclxuICAgICAgICAgIGZvciAoY29uc3QgaXRlbSBvZiBzbmFwc2hvdCkge1xyXG4gICAgICAgICAgICBhd2FpdCB3aW5kb3cuYXBpLmFqb3V0ZXJBTGlzdGUoaXRlbS5wcm9kdWl0X2lkLCBpdGVtLnF1YW50aXRlKTtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIGF3YWl0IGNoYXJnZXJEb25uZWVzKCk7XHJcbiAgICAgICAgfSxcclxuICAgICAgfSxcclxuICAgIH0pO1xyXG4gIH1cclxuXHJcbiAgZnVuY3Rpb24gaGFuZGxlT3V2cmlyU2F1dmVnYXJkZSgpIHtcclxuICAgIGNvbnN0IG5vdyA9IG5ldyBEYXRlKCk7XHJcbiAgICBjb25zdCBkZWZhdWx0Tm9tID0gYENvdXJzZXMgZHUgJHtub3cudG9Mb2NhbGVEYXRlU3RyaW5nKCdmci1GUicsIHsgZGF5OiAnMi1kaWdpdCcsIG1vbnRoOiAnMi1kaWdpdCcsIHllYXI6ICdudW1lcmljJyB9KX1gO1xyXG4gICAgc2V0Tm9tU2F1dmVnYXJkZShkZWZhdWx0Tm9tKTtcclxuICAgIHNldFNob3dTYXV2ZWdhcmRlTW9kYWwodHJ1ZSk7XHJcbiAgfVxyXG5cclxuICBhc3luYyBmdW5jdGlvbiBoYW5kbGVTYXV2ZWdhcmRlcigpIHtcclxuICAgIGlmICghbm9tU2F1dmVnYXJkZS50cmltKCkpIHJldHVybjtcclxuICAgIGF3YWl0IHdpbmRvdy5hcGkuc2F1dmVnYXJkZXJMaXN0ZShub21TYXV2ZWdhcmRlLnRyaW0oKSk7XHJcbiAgICBzZXRTaG93U2F1dmVnYXJkZU1vZGFsKGZhbHNlKTtcclxuICAgIHRvYXN0LnN1Y2Nlc3MoYExpc3RlIFwiJHtub21TYXV2ZWdhcmRlLnRyaW0oKX1cIiBzYXV2ZWdhcmTDqWVgKTtcclxuICB9XHJcblxyXG4gIGNvbnN0IHRvdGFsID0gbGlzdGUucmVkdWNlKChzdW0sIGkpID0+IHN1bSArIGkucHJpeCAqIGkucXVhbnRpdGUsIDApO1xyXG4gIGNvbnN0IG5iQ29jaGVzID0gbGlzdGUubGVuZ3RoO1xyXG5cclxuICAvLyBUcmkgcG91ciBsYSB2dWUgaW1wcmVzc2lvbiB1bmlxdWVtZW50IChtw6ptZSBsb2dpcXVlIHF1ZSBBcGVyY3VJbXByZXNzaW9uKVxyXG4gIGZ1bmN0aW9uIHBhcnNlUmF5b24obm9tOiBzdHJpbmcgfCB1bmRlZmluZWQpOiBbbnVtYmVyLCBzdHJpbmddIHtcclxuICAgIGlmICghbm9tKSByZXR1cm4gW0luZmluaXR5LCAnJ107XHJcbiAgICBjb25zdCBtYXRjaCA9IG5vbS50cmltKCkubWF0Y2goL14wKihcXGQrKShbYS16QS1aXSopJC8pO1xyXG4gICAgaWYgKCFtYXRjaCkgcmV0dXJuIFtJbmZpbml0eSwgbm9tLnRvTG93ZXJDYXNlKCldO1xyXG4gICAgcmV0dXJuIFtwYXJzZUludChtYXRjaFsxXSwgMTApLCBtYXRjaFsyXS50b0xvd2VyQ2FzZSgpXTtcclxuICB9XHJcblxyXG4gIGNvbnN0IGxpc3RlVHJpZSA9IFsuLi5saXN0ZV0uc29ydCgoYSwgYikgPT4ge1xyXG4gICAgY29uc3QgW251bUEsIGxldEFdID0gcGFyc2VSYXlvbihhLnJheW9uX25vbSk7XHJcbiAgICBjb25zdCBbbnVtQiwgbGV0Ql0gPSBwYXJzZVJheW9uKGIucmF5b25fbm9tKTtcclxuICAgIGlmIChudW1BICE9PSBudW1CKSByZXR1cm4gbnVtQSAtIG51bUI7XHJcbiAgICBpZiAobGV0QSAhPT0gbGV0QikgcmV0dXJuIGxldEEubG9jYWxlQ29tcGFyZShsZXRCLCAnZnInKTtcclxuICAgIHJldHVybiBhLnByb2R1aXRfbm9tLmxvY2FsZUNvbXBhcmUoYi5wcm9kdWl0X25vbSwgJ2ZyJyk7XHJcbiAgfSk7XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLWdyYXktNTBcIj5cclxuICAgICAgey8qIFRvb2xiYXIgKi99XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyLWIgYm9yZGVyLWdyYXktMjAwIHB4LTYgcHktMyBwcmludDpoaWRkZW5cIj5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm1heC13LTR4bCBteC1hdXRvIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktZW5kIGdhcC0yXCI+XHJcbiAgICAgICAgICB7bGlzdGUubGVuZ3RoID4gMCAmJiAoXHJcbiAgICAgICAgICAgIDxCYWRnZSB2YXJpYW50PVwiZGVmYXVsdFwiPntuYkNvY2hlc30ve2xpc3RlLmxlbmd0aH08L0JhZGdlPlxyXG4gICAgICAgICAgKX1cclxuICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cIm91dGxpbmVcIiBzaXplPVwic21cIiBvbkNsaWNrPXsoKSA9PiBzZXRTaG93SGlzdG9yaXF1ZSh0cnVlKX0+XHJcbiAgICAgICAgICAgIDxIaXN0b3J5IHNpemU9ezE1fSBjbGFzc05hbWU9XCJtci0xXCIgLz4gSGlzdG9yaXF1ZVxyXG4gICAgICAgICAgPC9CdXR0b24+XHJcbiAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJvdXRsaW5lXCIgc2l6ZT1cInNtXCIgb25DbGljaz17aGFuZGxlSW1wcmltZXJ9IGRpc2FibGVkPXtsaXN0ZS5sZW5ndGggPT09IDB9PlxyXG4gICAgICAgICAgICA8UHJpbnRlciBzaXplPXsxNX0gY2xhc3NOYW1lPVwibXItMVwiIC8+IEltcHJpbWVyXHJcbiAgICAgICAgICA8L0J1dHRvbj5cclxuICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cIm91dGxpbmVcIiBzaXplPVwic21cIiBvbkNsaWNrPXtoYW5kbGVPdXZyaXJTYXV2ZWdhcmRlfSBkaXNhYmxlZD17bGlzdGUubGVuZ3RoID09PSAwfT5cclxuICAgICAgICAgICAgPFNhdmUgc2l6ZT17MTV9IGNsYXNzTmFtZT1cIm1yLTFcIiAvPiBTYXV2ZWdhcmRlclxyXG4gICAgICAgICAgPC9CdXR0b24+XHJcbiAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJkZXN0cnVjdGl2ZVwiIHNpemU9XCJzbVwiIG9uQ2xpY2s9e2hhbmRsZVZpZGVyfSBkaXNhYmxlZD17bGlzdGUubGVuZ3RoID09PSAwfT5cclxuICAgICAgICAgICAgPFRyYXNoMiBzaXplPXsxNX0gY2xhc3NOYW1lPVwibXItMVwiIC8+IFZpZGVyXHJcbiAgICAgICAgICA8L0J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICA8bWFpbiBjbGFzc05hbWU9XCJtYXgtdy00eGwgbXgtYXV0byBweC02IHB5LTZcIj5cclxuICAgICAgICB7LyogQmFycmUgZGUgcmVjaGVyY2hlICovfVxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibWItNiBwcmludDpoaWRkZW4gZmxleCBnYXAtMlwiPlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LTFcIj5cclxuICAgICAgICAgICAgPFNlYXJjaEJhciBwcm9kdWl0cz17cHJvZHVpdHN9IG9uQWpvdXRlcj17aGFuZGxlQWpvdXRlcn0gb25Ob3V2ZWF1UHJvZHVpdD17KHF1ZXJ5KSA9PiB7IHNldFF1ZXJ5UG91ck5vdXZlYXVQcm9kdWl0KHF1ZXJ5KTsgc2V0U2hvd05vdXZlYXVQcm9kdWl0KHRydWUpOyB9fSAvPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJvdXRsaW5lXCIgc2l6ZT1cImljb25cIiBvbkNsaWNrPXsoKSA9PiB7IHNldFF1ZXJ5UG91ck5vdXZlYXVQcm9kdWl0KCcnKTsgc2V0U2hvd05vdXZlYXVQcm9kdWl0KHRydWUpOyB9fSB0aXRsZT1cIkNyw6llciB1biBub3V2ZWF1IHByb2R1aXRcIj5cclxuICAgICAgICAgICAgPFBsdXMgc2l6ZT17MTZ9IC8+XHJcbiAgICAgICAgICA8L0J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgey8qIExpc3RlIHZpZGUgKi99XHJcbiAgICAgICAge2xpc3RlLmxlbmd0aCA9PT0gMCAmJiAoXHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtY2VudGVyIHB5LTE2IHRleHQtZ3JheS00MDBcIj5cclxuICAgICAgICAgICAgPFNob3BwaW5nQ2FydCBzaXplPXs0MH0gY2xhc3NOYW1lPVwibXgtYXV0byBtYi0zIG9wYWNpdHktMzBcIiAvPlxyXG4gICAgICAgICAgICA8cD5MYSBsaXN0ZSBlc3QgdmlkZS4gUmVjaGVyY2hleiB1biBwcm9kdWl0IGNpLWRlc3N1cy48L3A+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICApfVxyXG5cclxuICAgICAgICB7LyogTGlzdGUgY29tcGzDqHRlICovfVxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTIwMCByb3VuZGVkLWxnIG92ZXJmbG93LWhpZGRlbiBkaXZpZGUteSBkaXZpZGUtZ3JheS0xMDBcIj5cclxuICAgICAgICAgIHtsaXN0ZS5tYXAoaXRlbSA9PiAoXHJcbiAgICAgICAgICAgIDxJdGVtTGlzdGVDb21wb25lbnRcclxuICAgICAgICAgICAgICBrZXk9e2l0ZW0uaWR9XHJcbiAgICAgICAgICAgICAgaXRlbT17aXRlbX1cclxuICAgICAgICAgICAgICBvblF1YW50aXRlPXtoYW5kbGVRdWFudGl0ZX1cclxuICAgICAgICAgICAgICBvblN1cHByaW1lcj17aGFuZGxlU3VwcHJpbWVyfVxyXG4gICAgICAgICAgICAgIG9uUHJpeD17aGFuZGxlUHJpeH1cclxuICAgICAgICAgICAgLz5cclxuICAgICAgICAgICkpfVxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogVG90YWwgKi99XHJcbiAgICAgICAge2xpc3RlLmxlbmd0aCA+IDAgJiYgKFxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC02IGZsZXgganVzdGlmeS1lbmQgcHJpbnQ6aGlkZGVuXCI+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyIGJvcmRlci1ncmF5LTIwMCByb3VuZGVkLWxnIHB4LTQgcHktMiB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRleHQtZ3JheS03MDBcIj5cclxuICAgICAgICAgICAgICBUb3RhbCBlc3RpbcOpIDogPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ibHVlLTYwMCBmb250LXNlbWlib2xkXCI+e3RvdGFsLnRvRml4ZWQoMil9IOKCrDwvc3Bhbj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICApfVxyXG4gICAgICA8L21haW4+XHJcblxyXG4gICAgICB7LyogVnVlIGltcHJlc3Npb24gMiBjb2xvbm5lcyAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJoaWRkZW4gcHJpbnQ6YmxvY2sgcC02XCI+XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlbiBpdGVtcy1jZW50ZXIgbWItNFwiPlxyXG4gICAgICAgICAgPGgxIGNsYXNzTmFtZT1cInRleHQtbGcgZm9udC1ib2xkXCI+TGlzdGUgZGUgQ291cnNlczwvaDE+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtZ3JheS01MDBcIj57bmV3IERhdGUoKS50b0xvY2FsZURhdGVTdHJpbmcoJ2ZyLUJFJyl9IOKAlCB7bGlzdGUubGVuZ3RofSBhcnRpY2xlczwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8aHIgY2xhc3NOYW1lPVwibWItNCBib3JkZXItZ3JheS0zMDBcIiAvPlxyXG4gICAgICAgIDxkaXYgc3R5bGU9e3sgY29sdW1uQ291bnQ6IDIsIGNvbHVtbkdhcDogJzNyZW0nIH19PlxyXG4gICAgICAgICAge2xpc3RlVHJpZS5tYXAoaXRlbSA9PiAoXHJcbiAgICAgICAgICAgIDxkaXYga2V5PXtpdGVtLmlkfSBzdHlsZT17eyBicmVha0luc2lkZTogJ2F2b2lkJyB9fSBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBweS0wLjUgdGV4dC1zbVwiPlxyXG4gICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImlubGluZS1ibG9jayB3LTMuNSBoLTMuNSBib3JkZXIgYm9yZGVyLWdyYXktNTAwIHNocmluay0wIG10LTAuNVwiIC8+XHJcbiAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZmxleC0xXCI+XHJcbiAgICAgICAgICAgICAgICB7aXRlbS5xdWFudGl0ZSA+IDEgJiYgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1tZWRpdW1cIj57aXRlbS5xdWFudGl0ZX3DlyA8L3NwYW4+fVxyXG4gICAgICAgICAgICAgICAge2l0ZW0ucHJvZHVpdF9ub219XHJcbiAgICAgICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICAgICAgIHtpdGVtLnByaXggPiAwICYmIChcclxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS00MDAgdGV4dC14cyBzaHJpbmstMFwiPnsoaXRlbS5wcml4ICogaXRlbS5xdWFudGl0ZSkudG9GaXhlZCgyKX3igqw8L3NwYW4+XHJcbiAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICApKX1cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8aHIgY2xhc3NOYW1lPVwibXQtNCBib3JkZXItZ3JheS0zMDBcIiAvPlxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWVuZCBtdC0yIHRleHQtc20gZm9udC1zZW1pYm9sZFwiPlxyXG4gICAgICAgICAgVG90YWwgZXN0aW3DqSA6IHt0b3RhbC50b0ZpeGVkKDIpfSDigqxcclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7LyogTW9kYWwgc2F1dmVnYXJkZSAqL31cclxuICAgICAge3Nob3dTYXV2ZWdhcmRlTW9kYWwgJiYgKFxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZml4ZWQgaW5zZXQtMCB6LTUwIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIGJnLWJsYWNrLzQwXCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIHJvdW5kZWQteGwgc2hhZG93LTJ4bCB3LWZ1bGwgbWF4LXctc20gcC02XCI+XHJcbiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJ0ZXh0LWJhc2UgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktODAwIG1iLTRcIj5TYXV2ZWdhcmRlciBsYSBsaXN0ZTwvaDI+XHJcbiAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcclxuICAgICAgICAgICAgICB2YWx1ZT17bm9tU2F1dmVnYXJkZX1cclxuICAgICAgICAgICAgICBvbkNoYW5nZT17ZSA9PiBzZXROb21TYXV2ZWdhcmRlKGUudGFyZ2V0LnZhbHVlKX1cclxuICAgICAgICAgICAgICBvbktleURvd249e2UgPT4gZS5rZXkgPT09ICdFbnRlcicgJiYgaGFuZGxlU2F1dmVnYXJkZXIoKX1cclxuICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIk5vbSBkZSBsYSBsaXN0ZS4uLlwiXHJcbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidy1mdWxsIGJvcmRlciBib3JkZXItZ3JheS0yMDAgcm91bmRlZC1sZyBweC0zIHB5LTIgdGV4dC1zbSBmb2N1czpvdXRsaW5lLW5vbmUgZm9jdXM6cmluZy0yIGZvY3VzOnJpbmctYmx1ZS01MDAgbWItNFwiXHJcbiAgICAgICAgICAgICAgYXV0b0ZvY3VzXHJcbiAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBnYXAtMiBqdXN0aWZ5LWVuZFwiPlxyXG4gICAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cIm91dGxpbmVcIiBzaXplPVwic21cIiBvbkNsaWNrPXsoKSA9PiBzZXRTaG93U2F1dmVnYXJkZU1vZGFsKGZhbHNlKX0+QW5udWxlcjwvQnV0dG9uPlxyXG4gICAgICAgICAgICAgIDxCdXR0b24gc2l6ZT1cInNtXCIgb25DbGljaz17aGFuZGxlU2F1dmVnYXJkZXJ9IGRpc2FibGVkPXshbm9tU2F1dmVnYXJkZS50cmltKCl9PlxyXG4gICAgICAgICAgICAgICAgPFNhdmUgc2l6ZT17MTR9IGNsYXNzTmFtZT1cIm1yLTFcIiAvPiBTYXV2ZWdhcmRlclxyXG4gICAgICAgICAgICAgIDwvQnV0dG9uPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICApfVxyXG5cclxuICAgICAgey8qIE1vZGFsIGhpc3RvcmlxdWUgKi99XHJcbiAgICAgIHtzaG93SGlzdG9yaXF1ZSAmJiAoXHJcbiAgICAgICAgPEhpc3RvcmlxdWVMaXN0ZXMgb25DbG9zZT17KCkgPT4gc2V0U2hvd0hpc3RvcmlxdWUoZmFsc2UpfSBvbkNoYXJnZXI9e2hhbmRsZUNoYXJnZXJMaXN0ZX0gLz5cclxuICAgICAgKX1cclxuXHJcbiAgICAgIHtzaG93Tm91dmVhdVByb2R1aXQgJiYgKFxyXG4gICAgICAgIDxNb2RhbGVOb3V2ZWF1UHJvZHVpdFxyXG4gICAgICAgICAgbm9tSW5pdGlhbD17cXVlcnlQb3VyTm91dmVhdVByb2R1aXR9XHJcbiAgICAgICAgICBvbkNyZWVyPXtoYW5kbGVDcmVlclByb2R1aXR9XHJcbiAgICAgICAgICBvbkNsb3NlPXsoKSA9PiBzZXRTaG93Tm91dmVhdVByb2R1aXQoZmFsc2UpfVxyXG4gICAgICAgIC8+XHJcbiAgICAgICl9XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59XHJcbiJdLCJmaWxlIjoiQzovVXNlcnMvQ2FwYWZpeC9EZXNrdG9wL0RldmVsb3BwZW1lbnQvbGlzdGUtY291cnNlL3NyYy9yZW5kZXJlci9wYWdlcy9MaXN0ZUNvdXJzZXMudHN4In0=

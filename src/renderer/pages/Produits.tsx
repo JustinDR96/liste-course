@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { Search, Pencil, Trash2, FileUp } from 'lucide-react';
+import { Search, Pencil, Trash2, FileUp, FileDown } from 'lucide-react';
 import { Produit, Rayon } from '../types';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
@@ -85,6 +85,12 @@ export default function Produits() {
     toast.success(`"${nom}" mis à jour`);
   }
 
+  async function handleExportExcel() {
+    const result = await window.api.exporterExcel();
+    if (result.canceled) return;
+    toast.success('Produits exportés avec succès');
+  }
+
   async function handleImportExcel() {
     const result = await window.api.importerExcel();
     if (result.canceled) return;
@@ -125,6 +131,9 @@ export default function Produits() {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Badge variant="outline">{produits.length} produits</Badge>
+            <Button variant="outline" size="sm" onClick={handleExportExcel}>
+              <FileDown size={14} className="mr-1" /> Exporter Excel
+            </Button>
             <Button variant="outline" size="sm" onClick={handleImportExcel}>
               <FileUp size={14} className="mr-1" /> Importer Excel
             </Button>

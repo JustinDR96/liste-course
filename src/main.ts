@@ -10,6 +10,7 @@ import {
   sauvegarderListe, getListesSauvegardees, getListeSauvegardeeItems, supprimerListeSauvegardee, chargerListeSauvegardee,
   getStatsBudgetMensuel, getStatsProduitsFréquents, getStatsGlobal, getStatsRayons, getStatsTopBudget,
   importerExcel,
+  exporterExcel,
 } from './database';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -59,6 +60,17 @@ ipcMain.handle('db:getStatsProduitsFréquents', () => getStatsProduitsFréquents
 ipcMain.handle('db:getStatsGlobal', () => getStatsGlobal());
 ipcMain.handle('db:getStatsRayons', () => getStatsRayons());
 ipcMain.handle('db:getStatsTopBudget', () => getStatsTopBudget());
+
+ipcMain.handle('db:exporterExcel', async () => {
+  const { canceled, filePath } = await dialog.showSaveDialog({
+    title: 'Exporter les produits',
+    defaultPath: `produits-${new Date().toISOString().slice(0, 10)}.xlsx`,
+    filters: [{ name: 'Excel', extensions: ['xlsx'] }],
+  });
+  if (canceled || !filePath) return { canceled: true };
+  exporterExcel(filePath);
+  return { canceled: false, filePath };
+});
 
 ipcMain.handle('db:importerExcel', async () => {
   const { canceled, filePaths } = await dialog.showOpenDialog({
