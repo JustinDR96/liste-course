@@ -42,9 +42,14 @@ contextBridge.exposeInMainWorld('api', {
   getStatsRayons: () => ipcRenderer.invoke('db:getStatsRayons'),
   getStatsTopBudget: () => ipcRenderer.invoke('db:getStatsTopBudget'),
 
+<<<<<<< HEAD
   // Export / Import Excel
   exporterExcel: () => ipcRenderer.invoke('db:exporterExcel'),
+=======
+  // Import / Export Excel
+>>>>>>> 3cfd30a97c5ae187b26d0d95299636237cd98182
   importerExcel: () => ipcRenderer.invoke('db:importerExcel'),
+  exporterExcel: () => ipcRenderer.invoke('db:exporterExcel'),
 
   // Impression
   print: () => ipcRenderer.invoke('print:preview'),

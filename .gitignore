@@ -90,3 +90,6 @@ typings/
 
 # Electron-Forge
 out/
+
+# Données locales dev (cache Electron, DB dev)
+donnees_application_dev/

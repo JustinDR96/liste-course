@@ -17,14 +17,11 @@ const config: ForgeConfig = {
       path.resolve('./node_modules/sql.js'),
       path.resolve('./node_modules/xlsx'),
     ],
-    // Windows uniquement
-    platform: 'win32',
-    arch: 'x64',
   },
   rebuildConfig: {},
   makers: [
     // ZIP portable — pas d'installeur, juste un dossier à extraire
-    new MakerZIP({}, ['win32']),
+    new MakerZIP({}, ['darwin', 'linux', 'win32']),
   ],
   hooks: {
     // Après packaging, créer un script batch de lancement portable

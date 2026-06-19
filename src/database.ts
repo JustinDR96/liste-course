@@ -357,11 +357,19 @@ export function getStatsTopBudget() {
   `);
 }
 
+<<<<<<< HEAD
 // ─── Export / Import Excel ────────────────────────────────────────────────────
 
 export function exporterExcel(filePath: string): void {
   const produits = all(`
     SELECT p.nom, p.prix, r.nom AS rayon_nom
+=======
+// ─── Export Excel ─────────────────────────────────────────────────────────────
+
+export function exporterExcel(): Buffer {
+  const produits = all(`
+    SELECT p.nom, COALESCE(r.nom, '') AS rayon_nom, p.prix
+>>>>>>> 3cfd30a97c5ae187b26d0d95299636237cd98182
     FROM produits p
     LEFT JOIN rayons r ON p.rayon_id = r.id
     ORDER BY r.numero_ordre ASC, p.nom ASC
@@ -369,6 +377,7 @@ export function exporterExcel(filePath: string): void {
 
   const rows = [
     ['Rayon', 'Produit', 'Prix'],
+<<<<<<< HEAD
     ...produits.map(p => [p.rayon_nom ?? '', p.nom, p.prix]),
   ];
 
@@ -377,8 +386,21 @@ export function exporterExcel(filePath: string): void {
   XLSX.utils.book_append_sheet(wb, ws, 'Produits');
   XLSX.writeFile(wb, filePath);
 }
+=======
+    ...produits.map(p => [p.rayon_nom, p.nom, p.prix]),
+  ];
 
-export async function importerExcel(filePath: string): Promise<{ rayons: number; produits: number }> {
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols'] = [{ wch: 20 }, { wch: 35 }, { wch: 10 }];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Catalogue');
+  return XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+}
+
+// ─── Import Excel ─────────────────────────────────────────────────────────────
+>>>>>>> 3cfd30a97c5ae187b26d0d95299636237cd98182
+
+export async function importerExcel(filePath: string): Promise<{ rayons: number; crees: number; mis_a_jour: number }> {
   const wb = XLSX.readFile(filePath);
   const sheet = wb.Sheets[wb.SheetNames[0]];
   const rows: unknown[][] = XLSX.utils.sheet_to_json(sheet, { header: 1 });
@@ -388,8 +410,10 @@ export async function importerExcel(filePath: string): Promise<{ rayons: number;
   const hasHeader = typeof firstRow[0] === 'string' && isNaN(Number(firstRow[0]));
   const data = hasHeader ? rows.slice(1) : rows;
 
-  // Collecter les codes de rayons uniques
-  const rayonsCodes = [...new Set(data.map(r => String(r[0])))].sort();
+  // Collecter les codes de rayons uniques non vides
+  const rayonsCodes = [...new Set(
+    data.map(r => String(r[0] ?? '').trim()).filter(Boolean)
+  )].sort();
 
   // Insérer les rayons manquants
   const rayonIds: Record<string, number> = {};
@@ -400,18 +424,27 @@ export async function importerExcel(filePath: string): Promise<{ rayons: number;
     rayonIds[code] = result[0].values[0][0] as number;
   }
 
-  // Insérer les produits
-  let count = 0;
+  // Upsert les produits : update si le nom existe déjà, sinon insert
+  let crees = 0;
+  let mis_a_jour = 0;
   for (const row of data) {
     const code = String(row[0] ?? '').trim();
     const nom = String(row[1] ?? '').trim();
     const prix = parseFloat(String(row[2])) || 0;
-    if (!nom || !code) continue;
-    const rayonId = rayonIds[code] ?? null;
-    db.run('INSERT INTO produits (nom, prix, rayon_id) VALUES (?, ?, ?)', [nom, prix, rayonId]);
-    count++;
+    if (!nom) continue;
+    const rayonId = code ? (rayonIds[code] ?? null) : null;
+
+    const existing = db.exec('SELECT id FROM produits WHERE LOWER(nom) = LOWER(?) LIMIT 1', [nom]);
+    if (existing[0]?.values[0]) {
+      const id = existing[0].values[0][0] as number;
+      db.run('UPDATE produits SET prix = ?, rayon_id = ? WHERE id = ?', [prix, rayonId, id]);
+      mis_a_jour++;
+    } else {
+      db.run('INSERT INTO produits (nom, prix, rayon_id) VALUES (?, ?, ?)', [nom, prix, rayonId]);
+      crees++;
+    }
   }
 
   save();
-  return { rayons: rayonsCodes.length, produits: count };
+  return { rayons: rayonsCodes.length, crees, mis_a_jour };
 }

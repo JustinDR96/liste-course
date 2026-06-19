@@ -95,7 +95,15 @@ export default function Produits() {
     const result = await window.api.importerExcel();
     if (result.canceled) return;
     await charger();
-    toast.success(`Import terminé — ${result.produits} produits, ${result.rayons} rayons ajoutés`);
+    const parts = [];
+    if (result.crees) parts.push(`${result.crees} ajouté${result.crees > 1 ? 's' : ''}`);
+    if (result.mis_a_jour) parts.push(`${result.mis_a_jour} mis à jour`);
+    toast.success(`Import terminé — ${parts.join(', ') || 'aucune modification'}`);
+  }
+
+  async function handleExportExcel() {
+    const result = await window.api.exporterExcel();
+    if (!result.canceled) toast.success('Catalogue exporté');
   }
 
   async function handleDelete(produit: Produit) {
