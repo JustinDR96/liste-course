@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Plus } from 'lucide-react';
 import { Produit } from '../types';
 import { Input } from './ui/input';
@@ -76,7 +76,12 @@ export default function SearchBar({ produits, onAjouter, onNouveauProduit }: Pro
                 className="flex justify-between items-center px-4 py-2 hover:bg-blue-50 cursor-pointer"
               >
                 <span className="font-medium text-sm">{p.nom}</span>
-                <span className="text-xs text-gray-400">{p.rayon_nom ?? 'Sans rayon'}</span>
+                <span className="flex items-center gap-3">
+                  {p.prix > 0 && (
+                    <span className="text-xs font-semibold text-blue-600">{p.prix.toFixed(2)} €</span>
+                  )}
+                  <span className="text-xs text-gray-400">{p.rayon_nom ?? 'Sans rayon'}</span>
+                </span>
               </li>
             ))}
             {aucunResultat && onNouveauProduit && (

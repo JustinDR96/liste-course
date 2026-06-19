@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain, dialog, shell, Menu } from 'electron';
 import path from 'node:path';
+import fs from 'node:fs';
 import https from 'node:https';
 import started from 'electron-squirrel-startup';
 import {
@@ -10,6 +11,7 @@ import {
   sauvegarderListe, getListesSauvegardees, getListeSauvegardeeItems, supprimerListeSauvegardee, chargerListeSauvegardee,
   getStatsBudgetMensuel, getStatsProduitsFréquents, getStatsGlobal, getStatsRayons, getStatsTopBudget,
   importerExcel,
+  exporterExcel,
 } from './database';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -69,6 +71,19 @@ ipcMain.handle('db:importerExcel', async () => {
   if (canceled || filePaths.length === 0) return { canceled: true };
   const stats = await importerExcel(filePaths[0]);
   return { canceled: false, ...stats };
+});
+
+ipcMain.handle('db:exporterExcel', async () => {
+  const date = new Date().toISOString().slice(0, 10);
+  const { canceled, filePath } = await dialog.showSaveDialog({
+    title: 'Exporter le catalogue',
+    defaultPath: `catalogue-${date}.xlsx`,
+    filters: [{ name: 'Excel', extensions: ['xlsx'] }],
+  });
+  if (canceled || !filePath) return { canceled: true };
+  const buffer = exporterExcel();
+  fs.writeFileSync(filePath, buffer);
+  return { canceled: false };
 });
 
 // ─── Vérificateur de mise à jour ──────────────────────────────────────────────

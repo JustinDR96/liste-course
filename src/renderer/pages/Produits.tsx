@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { Search, Pencil, Trash2, FileUp } from 'lucide-react';
+import { Search, Pencil, Trash2, FileUp, FileDown } from 'lucide-react';
 import { Produit, Rayon } from '../types';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
@@ -89,7 +89,15 @@ export default function Produits() {
     const result = await window.api.importerExcel();
     if (result.canceled) return;
     await charger();
-    toast.success(`Import terminé — ${result.produits} produits, ${result.rayons} rayons ajoutés`);
+    const parts = [];
+    if (result.crees) parts.push(`${result.crees} ajouté${result.crees > 1 ? 's' : ''}`);
+    if (result.mis_a_jour) parts.push(`${result.mis_a_jour} mis à jour`);
+    toast.success(`Import terminé — ${parts.join(', ') || 'aucune modification'}`);
+  }
+
+  async function handleExportExcel() {
+    const result = await window.api.exporterExcel();
+    if (!result.canceled) toast.success('Catalogue exporté');
   }
 
   async function handleDelete(produit: Produit) {
@@ -125,6 +133,9 @@ export default function Produits() {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Badge variant="outline">{produits.length} produits</Badge>
+            <Button variant="outline" size="sm" onClick={handleExportExcel}>
+              <FileDown size={14} className="mr-1" /> Exporter Excel
+            </Button>
             <Button variant="outline" size="sm" onClick={handleImportExcel}>
               <FileUp size={14} className="mr-1" /> Importer Excel
             </Button>

@@ -31,7 +31,8 @@ declare global {
       getStatsGlobal: () => Promise<any[]>;
       getStatsRayons: () => Promise<any[]>;
       getStatsTopBudget: () => Promise<any[]>;
-      importerExcel: () => Promise<{ canceled: boolean; rayons?: number; produits?: number }>;
+      importerExcel: () => Promise<{ canceled: boolean; rayons?: number; crees?: number; mis_a_jour?: number }>;
+      exporterExcel: () => Promise<{ canceled: boolean }>;
       print: () => Promise<void>;
       printToPdf: () => Promise<void>;
       onUpdateAvailable: (cb: (info: { version: string; url: string }) => void) => void;
