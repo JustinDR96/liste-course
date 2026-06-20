@@ -357,19 +357,11 @@ export function getStatsTopBudget() {
   `);
 }
 
-<<<<<<< HEAD
-// ─── Export / Import Excel ────────────────────────────────────────────────────
-
-export function exporterExcel(filePath: string): void {
-  const produits = all(`
-    SELECT p.nom, p.prix, r.nom AS rayon_nom
-=======
 // ─── Export Excel ─────────────────────────────────────────────────────────────
 
 export function exporterExcel(): Buffer {
   const produits = all(`
     SELECT p.nom, COALESCE(r.nom, '') AS rayon_nom, p.prix
->>>>>>> 3cfd30a97c5ae187b26d0d95299636237cd98182
     FROM produits p
     LEFT JOIN rayons r ON p.rayon_id = r.id
     ORDER BY r.numero_ordre ASC, p.nom ASC
@@ -377,16 +369,6 @@ export function exporterExcel(): Buffer {
 
   const rows = [
     ['Rayon', 'Produit', 'Prix'],
-<<<<<<< HEAD
-    ...produits.map(p => [p.rayon_nom ?? '', p.nom, p.prix]),
-  ];
-
-  const wb = XLSX.utils.book_new();
-  const ws = XLSX.utils.aoa_to_sheet(rows);
-  XLSX.utils.book_append_sheet(wb, ws, 'Produits');
-  XLSX.writeFile(wb, filePath);
-}
-=======
     ...produits.map(p => [p.rayon_nom, p.nom, p.prix]),
   ];
 
@@ -398,7 +380,6 @@ export function exporterExcel(): Buffer {
 }
 
 // ─── Import Excel ─────────────────────────────────────────────────────────────
->>>>>>> 3cfd30a97c5ae187b26d0d95299636237cd98182
 
 export async function importerExcel(filePath: string): Promise<{ rayons: number; crees: number; mis_a_jour: number }> {
   const wb = XLSX.readFile(filePath);

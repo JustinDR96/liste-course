@@ -1,8 +1,9 @@
 <<<<<<< HEAD
-2026/06/04-14:58:16.748 5f30 Creating DB C:\Users\Capafix\Desktop\Developpement\liste-course\donnees_application_dev\Session Storage since it was missing.
-2026/06/04-14:58:16.776 5f30 Reusing MANIFEST C:\Users\Capafix\Desktop\Developpement\liste-course\donnees_application_dev\Session Storage/MANIFEST-000001
+2026/06/04-15:10:07.770 3368 Reusing MANIFEST C:\Users\Capafix\Desktop\Developpement\liste-course\donnees_application_dev\Session Storage/MANIFEST-000001
+2026/06/04-15:10:07.770 3368 Recovering log #3
+2026/06/04-15:10:07.771 3368 Reusing old log C:\Users\Capafix\Desktop\Developpement\liste-course\donnees_application_dev\Session Storage/000003.log 
 =======
-2026/06/19-17:50:54.087 64e49 Reusing MANIFEST /Users/user/Desktop/Developpement/liste-course/donnees_application_dev/Session Storage/MANIFEST-000001
-2026/06/19-17:50:54.088 64e49 Recovering log #3
-2026/06/19-17:50:54.088 64e49 Reusing old log /Users/user/Desktop/Developpement/liste-course/donnees_application_dev/Session Storage/000003.log 
+2026/06/19-17:59:10.100 67b7b Reusing MANIFEST /Users/user/Desktop/Developpement/liste-course/donnees_application_dev/Session Storage/MANIFEST-000001
+2026/06/19-17:59:10.101 67b7b Recovering log #3
+2026/06/19-17:59:10.101 67b7b Reusing old log /Users/user/Desktop/Developpement/liste-course/donnees_application_dev/Session Storage/000003.log 
 >>>>>>> 3cfd30a97c5ae187b26d0d95299636237cd98182
