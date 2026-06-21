@@ -16,6 +16,30 @@ const XLSX = app.isPackaged
 let db: Database;
 let dbPath: string;
 
+function creerSauvegardeAuto(dataDir: string): void {
+  if (!fs.existsSync(dbPath)) return;
+
+  const backupDir = path.join(dataDir, 'sauvegardes');
+  if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir, { recursive: true });
+
+  const date = new Date().toISOString().slice(0, 10);
+  const backupPath = path.join(backupDir, `liste_courses_${date}.db`);
+
+  if (!fs.existsSync(backupPath)) {
+    fs.copyFileSync(dbPath, backupPath);
+  }
+
+  // Garder seulement les 7 dernières sauvegardes
+  const backups = fs.readdirSync(backupDir)
+    .filter(f => f.startsWith('liste_courses_') && f.endsWith('.db'))
+    .sort()
+    .reverse();
+
+  for (const old of backups.slice(7)) {
+    fs.unlinkSync(path.join(backupDir, old));
+  }
+}
+
 export async function initDatabase(dataDir: string): Promise<void> {
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir, { recursive: true });
@@ -44,6 +68,7 @@ export async function initDatabase(dataDir: string): Promise<void> {
   createTables();
   runMigrations();
   save();
+  creerSauvegardeAuto(dataDir);
 }
 
 function save(): void {
