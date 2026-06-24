@@ -46,6 +46,11 @@ contextBridge.exposeInMainWorld('api', {
   importerExcel: () => ipcRenderer.invoke('db:importerExcel'),
   exporterExcel: () => ipcRenderer.invoke('db:exporterExcel'),
 
+  // Récupération
+  scannerDB: () => ipcRenderer.invoke('db:scannerDB'),
+  restaurerDB: (filePath: string) => ipcRenderer.invoke('db:restaurerDB', filePath),
+  redemarrer: () => ipcRenderer.invoke('app:redemarrer'),
+
   // Impression
   print: () => ipcRenderer.invoke('print:preview'),
   printToPdf: () => ipcRenderer.invoke('print:pdf'),

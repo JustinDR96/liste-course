@@ -86,6 +86,75 @@ ipcMain.handle('db:exporterExcel', async () => {
   return { canceled: false };
 });
 
+// ─── Récupération de base de données ─────────────────────────────────────────
+
+function scanDir(
+  dir: string,
+  depth: number,
+  maxDepth: number,
+  results: Array<{ path: string; date: string; size: number }>
+): void {
+  if (depth > maxDepth) return;
+  const SKIP = new Set(['Windows', 'Program Files', 'Program Files (x86)', '$Recycle.Bin', 'node_modules', '.git', 'System Volume Information']);
+  try {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isFile() && entry.name === 'liste_courses.db') {
+        const fullPath = path.join(dir, entry.name);
+        const stat = fs.statSync(fullPath);
+        results.push({ path: fullPath, date: stat.mtime.toISOString(), size: stat.size });
+      } else if (entry.isDirectory() && !SKIP.has(entry.name)) {
+        scanDir(path.join(dir, entry.name), depth + 1, maxDepth, results);
+      }
+    }
+  } catch {}
+}
+
+ipcMain.handle('db:scannerDB', async () => {
+  const results: Array<{ path: string; date: string; size: number }> = [];
+
+  const roots = [
+    app.getPath('desktop'),
+    app.getPath('documents'),
+    app.getPath('downloads'),
+  ];
+  for (const root of roots) {
+    if (fs.existsSync(root)) scanDir(root, 0, 10, results);
+  }
+
+  // Sauvegardes automatiques
+  const backupDir = path.join(dataDir, 'sauvegardes');
+  if (fs.existsSync(backupDir)) scanDir(backupDir, 0, 1, results);
+
+  // Scan complet C:\ et D:\ (limité à 6 niveaux)
+  for (const drive of ['C:\\', 'D:\\', 'E:\\']) {
+    if (fs.existsSync(drive)) scanDir(drive, 0, 6, results);
+  }
+
+  // Dédoublonnage par chemin
+  const seen = new Set<string>();
+  return results.filter(r => {
+    if (seen.has(r.path)) return false;
+    seen.add(r.path);
+    return true;
+  });
+});
+
+ipcMain.handle('db:restaurerDB', async (_, filePath: string) => {
+  if (!fs.existsSync(filePath)) return { success: false, error: 'Fichier introuvable' };
+  try {
+    const dest = path.join(dataDir, 'liste_courses.db');
+    if (fs.existsSync(dest)) {
+      fs.copyFileSync(dest, dest + '.backup_avant_restauration');
+    }
+    fs.mkdirSync(dataDir, { recursive: true });
+    fs.copyFileSync(filePath, dest);
+    return { success: true };
+  } catch (e: any) {
+    return { success: false, error: e.message };
+  }
+});
+
 // ─── Vérificateur de mise à jour ──────────────────────────────────────────────
 const GITHUB_REPO = 'JustinDR96/liste-course';
 const CURRENT_VERSION = app.getVersion();
@@ -131,6 +200,11 @@ async function checkForUpdates(win: BrowserWindow) {
     win.webContents.send('update:available', { version: release.version, url: release.url });
   }
 }
+
+ipcMain.handle('app:redemarrer', () => {
+  app.relaunch();
+  app.exit(0);
+});
 
 ipcMain.handle('update:openUrl', (_, url: string) => {
   shell.openExternal(url);

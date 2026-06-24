@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Toaster } from 'sonner';
 import { HashRouter, NavLink, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { ShoppingCart, Package, LayoutGrid, Download, X, ChevronLeft, ChevronRight, BarChart2 } from 'lucide-react';
+import { ShoppingCart, Package, LayoutGrid, Download, X, ChevronLeft, ChevronRight, BarChart2, LifeBuoy } from 'lucide-react';
 import { DialogProvider } from './components/ui/dialog';
 import ListeCourses from './pages/ListeCourses';
 import Produits from './pages/Produits';
 import Rayons from './pages/Rayons';
 import ApercuImpression from './pages/ApercuImpression';
 import Stats from './pages/Stats';
+import Recuperation from './pages/Recuperation';
 
 const NAV_ITEMS = [
   { to: '/liste', icon: ShoppingCart, label: 'Liste de courses' },
   { to: '/produits', icon: Package, label: 'Catalogue' },
   { to: '/rayons', icon: LayoutGrid, label: 'Rayons' },
   { to: '/stats', icon: BarChart2, label: 'Statistiques' },
+  { to: '/recuperation', icon: LifeBuoy, label: 'Récupération' },
 ];
 
 function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
@@ -76,6 +78,7 @@ function Layout() {
           <Route path="/rayons" element={<Rayons />} />
           <Route path="/apercu" element={<ApercuImpression />} />
           <Route path="/stats" element={<Stats />} />
+          <Route path="/recuperation" element={<Recuperation />} />
           <Route path="*" element={<Navigate to="/liste" replace />} />
         </Routes>
       </main>
